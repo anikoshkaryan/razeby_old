@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+   .security_popup{
+       width: 100%;
+   }
+    .security_popup_wrapper {
+    background: #3C3C49;
+    border-radius: 30px;
+    padding: 31px 31px 100px 31px;
+    max-width: 1376px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .security_popup_link_icon_wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 56px;
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+    color: #FFFFFF;
+    text-decoration: none;
+
+}
+.security_popup_link_icon_wrapper svg{
+    margin-right: 30px;
+}
+.security_popup_titles_wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1028px;
+    margin: 0 auto;
+    padding-bottom: 29px;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 31px;
+}
+.security_popup_title {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;   
+    color: #3EFF74;
+    cursor: pointer;
+}
+.security_popup_title:hover{
+    color: #FFFFFF;
+}
+.security_popup_title.active{
+    color: #FFFFFF!important;
+}
+.security_popup_title:last-child{
+    width: 100%;
+    max-width: 306px;
+    text-align: center;
+}
+.security_popup_item{
+    display: none;
+}
+.security_popup_item.open{
+    display: block!important;
+}
+.change_password_form {
+    width: 100%;
+    max-width: 706px;
+    margin: 0 auto;
+}
+.change_password_input_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.change_password_form_input {
+    width: 100%;
+    max-width: 509px;
+}
+
+.change_password_form_input_field {
+    background: #22292C;
+    border-radius: 6px;
+    width: 100%;
+    border: none;
+    padding: 15px 13px;
+    cursor: pointer;
+    outline: none;
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+}
+.change_password_form_input_field::placeholder{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+}
+.change_password_form_input_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+}
+.change_password_form_btns_wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.change_password_form_btn{
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #3EFF74;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background: none;
+}
+
+#cancel_btn{
+    margin-right: 55px;
+}
+.password_code_to_phone_number_form {
+    width: 100%;
+    max-width: 326px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.password_code_to_phone_number_form_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #ACACAC;
+    width: 100%;
+    max-width: 326px;
+    margin-bottom: 20px;
+}
+.password_code_to_phone_number_form_title span{
+    font-weight: 600!important;
+}
+.password_code_to_phone_number_form_input {
+    width: 184px;
+    margin: 0 auto;
+    margin-bottom: 35px;
+}
+.password_code_to_phone_number_form_input_field{
+    background: #22292C;
+    border-radius: 6px;
+    width: 100%;
+    border: none;
+    padding: 15px 13px;
+    cursor: pointer;
+    outline: none;
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+   
+}
+.password_code_to_phone_number_form_input_field::placeholder{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+}
+.password_code_to_phone_number_form_btns_wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 184px;
+    margin: 0 auto;
+}
+.change_phone_number_form {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.change_phone_number_input_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 27px;
+}
+.change_phone_number_form_input_title{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+}
+.change_phone_number_form_input {
+    width: 100%;
+    max-width: 509px;
+}
+.change_phone_number_form_input_field{
+    background: #22292C;
+    border-radius: 6px;
+    width: 100%;
+    border: none;
+    padding: 15px 13px;
+    cursor: pointer;
+    outline: none;
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+}
+.change_phone_number_form_input_field::placeholder{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+}
+.change_phone_number_form_btns_wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+.change_phone_number_form_btn{
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #3EFF74;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background: none;
+}
+
+
+#cancel_btn3{
+    margin-right: 55px;
+}
+.two_factor_authentication {
+    width: 100%;
+    max-width: 645px;
+    margin: 0 auto;
+}
+.two_factor_authentication_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #E7E7E7;
+    margin-bottom: 12px;
+}
+
+.two_factor_authentication_info {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+    margin-bottom: 16px;
+}
+.two_factor_authentication_btns_wrpper {
+    display: flex;
+    justify-content: flex-end;
+}
+.two_factor_authentication_btn{
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #3EFF74;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background: none;
+}
+.password_code_to_phone_number_form_btn{
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #3EFF74;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background: none;
+}
+#cancel_btn4{
+    margin-right: 55px;
+}
+
+#cancel_btn5{
+    margin-right: 55px;
+}
+.two_factor_authentication_form {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.two_factor_authentication_form_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #E7E7E7;
+    margin-bottom: 20px;
+}
+.two_factor_authentication_form_info {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #ACACAC;
+    margin-bottom: 20px;
+}
+
+.two_factor_authentication_form_info span{
+    font-weight: 600!important;
+}
+.two_factor_authentication_form_input_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 410px;
+    margin-bottom: 20px;
+}
+.two_factor_authentication_form_input_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+}
+.two_factor_authentication_form_input {
+    width: 100%;
+    max-width: 243px;
+}
+.two_factor_authentication_form_input_field{
+    background: #22292C;
+    border-radius: 6px;
+    width: 100%;
+    border: none;
+    padding: 15px 13px;
+    cursor: pointer;
+    outline: none;
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+}
+.two_factor_authentication_form_input_field::placeholder{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E7E7E7;
+}
+
+@media (max-width: 1394px){
+    .security_popup_wrapper{
+        width: 95%!important;
+        max-width: unset!important;
+    }
+}
+
+@media (min-width: 769px) and (max-width:850px){
+    .security_popup_link_icon_wrapper {
+       margin-bottom: 35px!important;
+       font-size: 23px!important;
+       line-height: unset!important;
+   }
+   .security_popup_title{
+      font-size: 16px!important;
+       line-height: unset!important;       
+   }
+   .security_popup_titles_wrapper{
+    padding-bottom: 23px!important;  
+   }
+   .security_popup_title:last-child {
+    max-width: 272px!important; 
+}
+}
+
+@media (min-width: 471px) and (max-width: 768px){
+    .two_factor_authentication_title{
+        font-size: 18px!important;
+        line-height: unset!important;
+    }
+    .two_factor_authentication_form_title{
+        font-size: 18px!important;
+        line-height: unset!important;
+    }
+    .change_phone_number_input_wrapper {
+        flex-direction: column;
+        align-items: unset!important; 
+  }
+  .change_phone_number_form_input{
+      max-width: unset!important; 
+  }
+    .security_popup_titles_parent_wrapper{
+        overflow: auto;
+    }
+    .security_popup_titles_wrapper{
+        overflow: auto;
+    }
+    .security_popup_wrapper {
+    padding: 31px 31px 60px 31px!important; 
+    }
+    .security_popup_link_icon_wrapper {
+       margin-bottom: 30px!important;
+       font-size: 23px!important;
+       line-height: unset!important;
+   }
+   .security_popup_title{
+      font-size: 14px!important;
+       line-height: unset!important;       
+   }
+   .security_popup_title span{
+          display: none!important; 
+   }
+   .security_popup_titles_wrapper{
+    padding-bottom: 23px!important;  
+   }
+   .security_popup_title:last-child {
+    max-width: unset!important; 
+    width: unset!important; 
+   }
+   .change_password_input_wrapper {
+      align-items: unset!important; 
+      flex-direction: column;
+   }
+   .change_password_form_input {
+    width: 100%;
+    max-width: unset!important; 
+  }
+  .security_popup_wrapper{
+      border-radius: 20px!important;
+  }
+  .security_popup_title{
+      width: 258px;
+      margin: 0 auto;
+      text-align: center;
+  }
+    label {
+    margin-bottom: 13px;
+   }
+
+  
+}
+
+
+@media (min-width: 426px) and (max-width: 470px){
+    .two_factor_authentication_form_input_wrapper {
+        flex-direction: column;
+         align-items: unset;
+  } 
+  .two_factor_authentication_form_input {
+     max-width: unset!important;
+   }
+   #cancel_btn5 {
+      margin-right: 35px!important;
+   }
+    .two_factor_authentication_btn{
+        font-size: 16px!important;
+        line-height: unset!important;
+    }
+    .two_factor_authentication_form_title{
+        font-size: 18px!important;
+        line-height: unset!important;
+    }
+    .two_factor_authentication_form_info{
+        font-size: 14px!important;
+        line-height: unset!important;
+    }
+    #cancel_btn4 {
+       margin-right: 35px!important;
+   }
+    .two_factor_authentication_title{
+        font-size: 18px!important;
+        line-height: unset!important;
+    }
+    .two_factor_authentication_info{
+        font-size: 14px!important;
+        line-height: unset!important;
+    }
+    .two_factor_authentication_btn{
+        font-size: 16px!important;
+    }
+    #cancel_btn3 {
+       margin-right: 35px!important; 
+    }
+    .change_phone_number_input_wrapper {
+        flex-direction: column;
+        align-items: unset!important; 
+  }
+  .change_phone_number_form_input{
+      max-width: unset!important; 
+  }
+    .change_phone_number_form_input_title{
+        font-size: 14px!important; 
+        line-height: unset!important; 
+    }
+    .change_phone_number_form_btn{
+        font-size: 16px!important; 
+        line-height: unset!important; 
+    }
+    .password_code_to_phone_number_form_title{
+        font-size: 14px!important; 
+    }
+    .change_password_form_btn{
+        font-size: 16px!important;
+    }
+    .security_popup_titles_parent_wrapper{
+        overflow: auto;
+    }
+    .security_popup_titles_wrapper{
+        overflow: auto;
+    }
+    .security_popup_wrapper {
+    padding: 31px 31px 50px 31px!important; 
+    }
+    .security_popup_link_icon_wrapper {
+       margin-bottom: 20px!important;
+       font-size: 18px!important;
+       line-height: unset!important;
+   }
+   .security_popup_link_icon_wrapper svg{
+       margin-right: 15px!important;
+   }
+   .change_password_form_input_title{
+       font-size: 14px!important;
+       line-height: unset!important;
+   }
+   .security_popup_title{
+      font-size: 12px!important;
+       line-height: unset!important;       
+   }
+   #cancel_btn {
+    margin-right: 35px!important;    
+  }
+   .change_password_form_input_field{
+       padding: 10px 12px!important; 
+   }
+      .security_popup_title span{
+          display: none!important; 
+   }
+   .security_popup_titles_wrapper{
+    padding-bottom: 23px!important;  
+   }
+   .security_popup_title:last-child {
+    max-width: unset!important; 
+    width: unset!important; 
+   }
+   .change_password_input_wrapper {
+      align-items: unset!important; 
+      flex-direction: column;
+   }
+   .change_password_form_input {
+    width: 100%;
+    max-width: unset!important; 
+  }
+  .security_popup_wrapper{
+      border-radius: 15px!important;
+  }
+  .security_popup_title{
+      margin: 0 auto;
+      text-align: center;
+  }
+    label {
+    margin-bottom: 13px;
+   }
+
+  
+}
+
+@media (max-width: 425px){
+    .two_factor_authentication_form_input_wrapper {
+        flex-direction: column;
+         align-items: unset;
+  } 
+  .two_factor_authentication_form_input {
+     max-width: unset!important;
+   }
+    .two_factor_authentication_form_input_field{
+        padding: 10px 13pximportant;
+        font-size: 14pximportant;
+    }
+    .two_factor_authentication_form_input_title{
+        font-size: 14px!important;
+        line-height: unset!important;
+    }
+    #cancel_btn5 {
+      margin-right: 30px!important;
+   }
+    .two_factor_authentication_btn{
+        font-size: 14px!important;
+        line-height: unset!important;
+    }
+    .two_factor_authentication_form_info{
+        font-size: 12px!important;
+        line-height: unset!important;
+    }
+    .two_factor_authentication_title{
+        font-size: 16px!important;
+        line-height: unset!important;
+    }
+    .two_factor_authentication_form_title{
+        font-size: 16px!important;
+        line-height: unset!important;
+    }
+    .two_factor_authentication_info{
+        font-size: 12px!important;
+        line-height: unset!important;
+    }
+    #cancel_btn4 {
+       margin-right: 30px!important;
+   }
+    .two_factor_authentication_btn{
+        font-size: 14px!important;
+    }
+    #cancel_btn3 {
+       margin-right: 30px!important; 
+    }
+    .change_phone_number_input_wrapper {
+        flex-direction: column;
+        align-items: unset!important; 
+  }
+  .change_phone_number_input_wrapper{
+      margin-bottom: 20px!important; 
+  }
+  .change_phone_number_form_input{
+      max-width: unset!important; 
+  }
+    .change_phone_number_form_input_title{
+        font-size: 12px!important; 
+        line-height: unset!important; 
+    }
+    .change_phone_number_form_btn{
+        font-size: 14px!important; 
+        line-height: unset!important; 
+    }
+    .change_phone_number_form_input_field{
+        padding: 10px 13px!important; 
+        font-size: 14px!important; 
+    }
+    .password_code_to_phone_number_form_input_field{
+        padding: 10px 13px!important;
+    }
+    .password_code_to_phone_number_form_title{
+        font-size: 12px!important; 
+        line-height: unset!important;
+    }
+    .change_password_form_btn{
+        font-size: 14px!important;
+    }
+    .password_code_to_phone_number_form_input{
+        margin-bottom: 25px!important;
+    }
+    .password_code_to_phone_number_form_btn{
+        font-size: 16px!important;
+    }
+        .security_popup_titles_parent_wrapper{
+        overflow: auto;
+    }
+    .security_popup_titles_wrapper{
+        overflow: auto;
+    }
+    .security_popup_wrapper {
+    padding: 25px 20px 40px 20px!important; 
+    }
+    .security_popup_link_icon_wrapper {
+       margin-bottom: 15px!important;
+       font-size: 16px!important;
+       line-height: unset!important;
+   }
+   .security_popup_link_icon_wrapper svg{
+       margin-right: 10px!important;
+   }
+   .change_password_form_input_title{
+       font-size: 12px!important;
+       line-height: unset!important;
+   }
+   .security_popup_title{
+      font-size: 10px!important;
+       line-height: unset!important;   
+   }
+   .security_popup_titles_wrapper{
+       margin-bottom: 25px!important;  
+   }
+   #cancel_btn {
+    margin-right: 30px!important;    
+  }
+   .change_password_form_input_field{
+       padding: 10px 12px!important; 
+   }
+      .security_popup_title span{
+          display: none!important; 
+   }
+   .security_popup_titles_wrapper{
+    padding-bottom: 20px!important;  
+   }
+   .security_popup_title:last-child {
+    max-width: unset!important; 
+    width: unset!important; 
+   }
+   .change_password_input_wrapper {
+      align-items: unset!important; 
+      flex-direction: column;
+   }
+   .change_password_form_input {
+    width: 100%;
+    max-width: unset!important; 
+  }
+  .security_popup_wrapper{
+      border-radius: 10px!important;
+  }
+  .security_popup_title{
+      margin: 0 auto;
+      text-align: center;
+  }
+    label {
+    margin-bottom: 5px;
+   }
+
+  
+}
+@media (min-width: 769px) and (max-width: 815px){
+ .change_password_form_input {
+    width: 100%;
+    max-width: 480px!important; 
+  }
+  .security_popup_wrapper{
+      border-radius: 25px!important;
+  }
+  
+}
+</style>
+
+</head>
+<body>
+   
+<div class="security_popup">
+    <div class="security_popup_wrapper">
+            <a href="" class="security_popup_link_icon_wrapper">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 7H3.83L9.42 1.41L8 0L0 8L8 16L9.41 14.59L3.83 9H16V7Z" fill="#3EFF74"/></svg>
+                Безопасность
+            </a>
+           
+            <div class="security_popup_titles_parent_wrapper">
+                <div class="security_popup_titles_wrapper">
+                       <p class="security_popup_title" data-id="open_div1">ИЗМЕНИТЬ ПАРОЛЬ</p>
+                      <p class="security_popup_title" data-id="open_div2">ИЗМЕНИТЬ ТЕЛЕФОН</p>
+                        <p class="security_popup_title" data-id="open_div3"><span> НАСТРОИТЬ </span>ДВУХФАКТОРНУЮ ИДЕНТИФИКАЦИЮ</p>
+                </div>
+            </div>
+           
+            <div class="security_popup_item" id="open_div1">
+              <form action="" class="change_password_form" >
+                <div class="change_password_input_wrapper">
+                    <label for="change_password_input1">
+                        <span class="change_password_form_input_title">Старый пароль</span>
+                    </label>
+                    <div class="change_password_form_input">
+                        <input type="text" class="change_password_form_input_field" name="old_paswword" id="change_password_input1">
+                    </div>
+                </div>
+                <div class="change_password_input_wrapper">
+                    <label for="change_password_input2">
+                        <span class="change_password_form_input_title">Новый пароль</span>
+                    </label>
+                    <div class="change_password_form_input">
+                        <input type="text" class="change_password_form_input_field" name="new_password" id="change_password_input2">
+                    </div>
+                </div>
+                <div class="change_password_input_wrapper">
+                    <label for="change_password_input3">
+                        <span class="change_password_form_input_title">Новый пароль еще раз</span>
+                    </label>
+                    <div class="change_password_form_input">
+                        <input type="text" class="change_password_form_input_field" name="repeat_password" id="change_password_input3">
+                    </div>
+                </div>
+                 <div class="change_password_form_btns_wrapper">
+                     <button class="change_password_form_btn" id="cancel_btn">ОТМЕНА</button>
+                     <button class="change_password_form_btn" id="ok_btn">ОК</button>
+                 </div>
+              </form>
+              <form class="password_code_to_phone_number_form">
+                   <p class="password_code_to_phone_number_form_title"> На телефон <br> <span>+7 913 776 8652</span>  <br> поступит звонок, сбросьте его и введите 
+                    4 последних цифры из звонившего номера</p>
+                    <div class="password_code_to_phone_number_form_input">
+                        <input type="text" class="password_code_to_phone_number_form_input_field" name="password_code">
+                    </div>
+                    <div class="password_code_to_phone_number_form_btns_wrapper">
+                        <button class="password_code_to_phone_number_form_btn" id="cancel_btn2">ОТМЕНА</button>
+                        <button class="password_code_to_phone_number_form_btn" id="ok_btn2">ОК</button>
+                    </div>
+              </form>
+            </div>
+              <div class="security_popup_item" id="open_div2">
+                  <form action="" class="change_phone_number_form">
+                    <div class="change_phone_number_input_wrapper">
+                        <label for="change_phone_number_input1">
+                            <span class="change_phone_number_form_input_title">Новый телефон</span>
+                        </label>
+                        <div class="change_phone_number_form_input">
+                            <input type="text" class="change_phone_number_form_input_field" name="new_phone_number" id="change_phone_number_input1">
+                        </div>
+                    </div>
+                    <div class="change_phone_number_form_btns_wrapper">
+                        <button class="change_phone_number_form_btn" id="cancel_btn3">ОТМЕНА</button>
+                        <button class="change_phone_number_form_btn" id="ok_btn3">ОК</button>
+                    </div>
+                  </form>
+              </div>
+              <div class="security_popup_item" id="open_div3">
+                  <div class="two_factor_authentication">
+                      <p class="two_factor_authentication_title">Двухфакторная аутентификация</p>
+                      <p class="two_factor_authentication_info">– это дополнительная защита аккаунта. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                      <div class="two_factor_authentication_btns_wrpper">
+                           <button class="two_factor_authentication_btn" id="cancel_btn4">ОТМЕНА</button>
+                           <button class="two_factor_authentication_btn" id="plug_btn">ПОДКЛЮЧИТЬ</button>
+                      </div>
+                  </div>
+                  <form action="" class="two_factor_authentication_form">
+                      <p class="two_factor_authentication_form_title">Двухфакторная аутентификация</p>
+                      <p  class="two_factor_authentication_form_info">
+                        На номер  <span> +7 913 776 8652</span>   поступит звонок, сбросьте его и введите 4 последних цифры из звонившего номера, а также ваш текущий пароль
+                      </p>
+                      <div class="two_factor_authentication_form_input_wrapper">
+                        <label for="two_factor_authentication_form_input1">
+                            <span class="two_factor_authentication_form_input_title">4 цифры из номера</span>
+                        </label>
+                        <div class="two_factor_authentication_form_input">
+                            <input type="text" class="two_factor_authentication_form_input_field" name="phone_number" id="two_factor_authentication_form_input1">
+                        </div>
+                    </div>
+                    <div class="two_factor_authentication_form_input_wrapper">
+                        <label for="two_factor_authentication_form_input2">
+                            <span class="two_factor_authentication_form_input_title">Пароль</span>
+                        </label>
+                        <div class="two_factor_authentication_form_input">
+                            <input type="text" class="two_factor_authentication_form_input_field" name="two_factor_authentication_password" id="two_factor_authentication_form_input2">
+                        </div>
+                    </div>
+                    <div class="two_factor_authentication_btns_wrpper">
+                        <button class="two_factor_authentication_btn" id="cancel_btn5">ОТМЕНА</button>
+                        <button class="two_factor_authentication_btn" id="ok_btn4">ОК</button>
+                   </div>
+                  </form>
+              </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).on("click", ".security_popup_title", function(){
+
+var data_id = $(this).data("id");
+$(".security_popup_title").removeClass("active");
+$(this).addClass("active");
+
+
+
+$(".security_popup_item").removeClass("open");
+$("#" + data_id).addClass("open");
+})  
+
+</script>
+</body>
+</html>
+
+
+

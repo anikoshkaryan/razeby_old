@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/main_logo.svg">
+        <title>Кошелек</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    .wallet {
+        width: 100%;
+        margin-bottom: 13px;
+        margin-top: 12px;
+    }
+    .wallet_wrapper {
+       width: 100%;
+       max-width: 1376px;
+       margin: 0 auto;
+       background: #3C3C49;
+       border-radius: 30px;
+       padding: 40px 26px;
+   }
+   .wallet_link {
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 33px;
+    display: flex;
+    align-items: center;
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+.wallet_link svg {
+    margin-right: 31px;
+}
+
+.wallet_balance_wrapper {
+    max-width: 1224px;
+    width: 100%;
+    margin: 0 auto;
+    height: 90px;
+    background: #22292C;
+    border-radius: 18px;
+    margin-bottom: 33px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 26px;
+    cursor: pointer;
+}
+.wallet_balance_item {
+    display: flex;
+}
+.wallet_balance_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #888888;
+    margin-right: 11px;
+}
+.wallet_balance_num {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+#wallet_balance_first_item{
+    align-items: center;
+}
+
+.wallet_balance_btn {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: right;
+    color: #3EFF74;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.wallet_balance_btn1{
+    margin-right: 55px;
+}
+.wallet_items_wrapper {
+    max-width: 1224px;
+    width: 100%;
+    margin: 0 auto;
+}
+.wallet_items_titles_wrapper {
+    display: flex;
+    align-items: flex-start;
+    /* margin-bottom: 17px; */
+    max-width: 874px;
+    width: 100%;
+    justify-content: space-between;
+}
+.wallet_items_title {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #3EFF74;
+    cursor: pointer;
+    padding-bottom: 17px;
+    width: 187px;
+    margin: 0 auto;
+    text-align: center;
+
+      
+}
+.wallet_items_title:hover{
+   color: #FFFFFF;
+border-bottom: 2px solid #FFFFFF;
+padding-bottom: 15px;
+}
+.wallet_items_title.active{
+    color: #FFFFFF;
+border-bottom: 2px solid #FFFFFF;
+padding-bottom: 15px;
+}
+.wallet_item_main_line {
+    max-width: 1224px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #000000;
+    margin-bottom: 33px;
+}
+.wallet_item {
+    /* max-width: 445px;
+    width: 100%;  */
+    display: none;
+    justify-content: space-between;
+}
+
+.wallet_item_date_sum_title:first-child{
+    margin-left: 20px;   
+}
+.wallet_item_date_sum_info:first-child{
+    margin-left: 20px;   
+}
+.wallet_item_date_sum_wrapper:first-child{
+    padding-bottom:  10px;
+}
+.wallet_item_date_sum_wrapper{
+    padding-bottom: 20px;
+}
+.wallet_item_date_sum_wrapper:not(:last-child){
+    margin-bottom: 20px;
+}
+.wallet_item.open{
+    display: block!important;
+}
+.wallet_item_date_sum_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #888888;
+}
+.wallet_item_date_sum_info {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #E7E7E7;
+}
+    .minus_sum {
+    color: #FF5894!important;
+}
+.wallet_item_date_sum_wrapper {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #252531;
+}
+.wallet_item_date_sum_info:first-child{
+    margin-right: 110px;
+}
+.wallet_item_date_sum_info:nth-child(2){
+    margin-right: 134px;
+}
+.wallet_item_date_sum_title:first-child{
+    margin-right: 168px;
+}
+.wallet_item_date_sum_title:nth-child(2){
+    margin-right: 140px;
+}
+
+/*medi*/
+
+@media (min-width: 601px) and (max-width: 750px){
+    
+.wallet_items_title {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-size: 15px!important;
+}
+.wallet_item_date_sum_info{
+    font-size: 17px!important;
+}
+}
+
+@media (min-width:601px) and (max-width: 668px){
+    .wallet_item_date_sum_title:nth-child(2) {
+    margin-right: 126px!important;
+}
+}
+@media (min-width:481px) and (max-width: 600px){
+    .wallet_items_title {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-size: 15px!important;
+}
+.wallet_item_date_sum_info{
+    font-size: 16px!important;
+}
+    .wallet_items_titles_main_wrapper {
+    overflow: auto;
+  }
+.wallet_items_titles_wrapper {
+    width: 700px!important;
+    max-width: unset!important;
+    overflow: auto;
+}
+.wallet_item_date_sum_title:first-child {
+    margin-right: 142px!important;
+}
+.wallet_item_date_sum_title:nth-child(2) {
+    margin-right: 80px!important;
+}
+.wallet_item_date_sum_info:first-child {
+    margin-right: 90px!important;
+}
+.wallet_item_date_sum_info:nth-child(2) {
+    margin-right: 92px!important;
+}
+}
+
+@media (min-width:581px) and (max-width: 760px){
+    .wallet_balance_btn1 {
+    margin-right: 20px!important;
+}
+
+.wallet_balance_btn {
+    font-size: 16px!important;
+}
+.wallet_balance_num {
+    font-size: 28px!important;
+}
+
+.wallet_balance_wrapper {
+    padding: 22px 15px!important;
+
+}
+
+}
+@media (min-width:486px) and (max-width: 580px){
+    .wallet_balance_btn1 {
+    margin-right: 14px!important;
+}
+
+.wallet_balance_btn {
+    font-size: 14px!important;
+}
+.wallet_balance_num {
+    font-size: 24px!important;
+}
+
+.wallet_balance_wrapper {
+    padding: 20px 10px!important;
+
+}
+
+}
+@media (max-width: 485px){
+    .wallet_balance_btn1 {
+    margin-right: 10px!important;
+}
+
+.wallet_balance_btn {
+    font-size: 12px!important;
+}
+.wallet_balance_num {
+    font-size: 20px!important;
+}
+.wallet_balance_title {
+    font-size: 13px!important;
+    margin-right: 5px!important;
+}
+
+.wallet_balance_wrapper {
+    padding: 10px!important;
+    height: 75px!important;
+}
+
+}
+@media (max-width: 416px){
+    .wallet_balance_item:nth-child(2){
+    flex-direction: column;
+}
+ .wallet_balance_btn1{
+     margin-right: unset!important;
+ }
+}
+@media (max-width: 600px){
+    .wallet_wrapper {
+    padding: 40px 12px!important;
+}
+}
+@media (min-width:601px) and (max-width: 800px){
+    .wallet_wrapper{
+        border-radius: 20px!important;
+    }
+}
+@media (min-width:426px) and (max-width: 600px){
+    .wallet_wrapper{
+        border-radius: 10px!important;
+    }
+}
+@media  (max-width: 425px){
+    .wallet_wrapper{
+        border-radius:unset!important;
+    }
+    .wallet_link svg {
+    margin-right: 20px!important;
+}
+.wallet_link  {
+    font-size: 22px!important;
+}
+}
+@media (max-width: 370px){
+    #wallet_balance_first_item {
+    align-items: unset!important;
+    flex-direction: column;
+}
+}
+
+@media (min-width:420px) and (max-width: 480px){
+    .wallet_items_title {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-size: 15px!important;
+}
+.wallet_item_date_sum_info{
+    font-size: 16px!important;
+}
+    .wallet_items_titles_main_wrapper {
+    overflow: auto;
+  }
+.wallet_items_titles_wrapper {
+    width: 700px!important;
+    max-width: unset!important;
+    overflow: auto;
+}
+.wallet_item_date_sum_title:first-child {
+    margin-right: 98px!important;
+}
+.wallet_item_date_sum_title:nth-child(2) {
+    margin-right: 80px!important;
+}
+.wallet_item_date_sum_info:first-child {
+    margin-right: 54px!important;
+}
+.wallet_item_date_sum_info:nth-child(2) {
+    margin-right: 80px!important;
+}
+}
+@media (min-width:336px) and (max-width: 419px){
+    .wallet_items_title {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-size: 14px!important;
+    width: 155px!important;
+}
+.wallet_item_date_sum_info{
+    font-size: 14px!important;
+}
+    .wallet_items_titles_main_wrapper {
+    overflow: auto;
+  }
+.wallet_items_titles_wrapper {
+    width: 600px!important;
+    max-width: unset!important;
+    overflow: auto;
+}
+.wallet_item_date_sum_title:first-child {
+    margin-right: 70px!important;
+}
+.wallet_item_date_sum_title:nth-child(2) {
+    margin-right: 62px!important;
+}
+.wallet_item_date_sum_info:first-child {
+    margin-right: 41px!important;
+}
+.wallet_item_date_sum_info:nth-child(2) {
+    margin-right: 61px!important;
+}
+.wallet_item_date_sum_info:first-child{
+    margin-left: unset!important;
+}
+.wallet_item_date_sum_title:first-child {
+    margin-left: unset!important;
+}
+}
+@media (max-width: 335px){
+    .wallet_items_title {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-size: 14px!important;
+    width: 155px!important;
+}
+.wallet_item_date_sum_info{
+    font-size: 14px!important;
+}
+    .wallet_items_titles_main_wrapper {
+    overflow: auto;
+  }
+.wallet_items_titles_wrapper {
+    width: 600px!important;
+    max-width: unset!important;
+    overflow: auto;
+}
+.wallet_item_date_sum_title:first-child {
+    margin-right: 62px!important;
+}
+.wallet_item_date_sum_title:nth-child(2) {
+    margin-right: 52px!important;
+}
+.wallet_item_date_sum_info:first-child {
+    margin-right: 32px!important;
+}
+.wallet_item_date_sum_info:nth-child(2) {
+    margin-right: 52px!important;
+}
+.wallet_item_date_sum_info:first-child{
+    margin-left: unset!important;
+}
+.wallet_item_date_sum_title:first-child {
+    margin-left: unset!important;
+}
+}
+  </style>
+
+</head>
+<body>
+    <div class="wallet">
+          <div  class="wallet_wrapper">
+              <a href="" class="wallet_link">
+                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 7H3.83L9.42 1.41L8 0L0 8L8 16L9.41 14.59L3.83 9H16V7Z" fill="#3EFF74"/>
+                    </svg>
+                    Кошелек</a>
+                    <div class="wallet_balance_wrapper">
+                        <div class="wallet_balance_item" id="wallet_balance_first_item">
+                            <p class="wallet_balance_title">Баланс</p>
+                            <p class="wallet_balance_num">1053.00 </p>
+                        </div>
+                        <div class="wallet_balance_item">
+                            <button class="wallet_balance_btn wallet_balance_btn1">ПОПОЛНИТЬ БАЛАНС</button>
+                            <button class="wallet_balance_btn wallet_balance_btn2">ВЫВЕСТИ</button>
+                        </div>
+                    </div>
+                    <div class="wallet_items_wrapper">
+                        <div class="wallet_items_titles_main_wrapper">
+                                <div class="wallet_items_titles_wrapper">
+                                <p class="wallet_items_title active" data-id="wallet_item_open_div1">БАЛАНС</p>
+                                <p class="wallet_items_title" data-id="wallet_item_open_div2">ПОПОЛНЕНИЕ</p>
+                                <p class="wallet_items_title" data-id="wallet_item_open_div3">ВЫВОД</p>
+                                <p class="wallet_items_title" data-id="wallet_item_open_div4">ВЫИГРЫШ</p>
+                                <p class="wallet_items_title" data-id="wallet_item_open_div5">ПРОИГРЫШ</p>
+                            </div>
+                        </div>
+                        
+                            <div class="wallet_item_main_line"></div>
+                            <div class="wallet_item open" id="wallet_item_open_div1">
+                                 <div class="wallet_item_date_sum_wrapper">
+                                        <p class="wallet_item_date_sum_title">Дата</p>
+                                        <p class="wallet_item_date_sum_title">Сумма</p>
+                                        <p class="wallet_item_date_sum_title">Действие</p>
+                                 </div>
+                                 
+                                 <div class="wallet_item_date_sum_wrapper">
+                                   <p class="wallet_item_date_sum_info">12.07.2021</p>
+                                    <p class="wallet_item_date_sum_info">+98.00</p>
+                                    <p class="wallet_item_date_sum_info">Пополнение: Mastercard</p>                       
+                                 </div>
+                                
+                                 <div class="wallet_item_date_sum_wrapper">
+                                   <p class="wallet_item_date_sum_info">13.07.2021</p>
+                                   <p class="wallet_item_date_sum_info">+16.00</p>
+                                    <p class="wallet_item_date_sum_info">Пополнение: Бонус</p>
+                                    
+                                 </div>
+                                 <div class="wallet_item_date_sum_wrapper">
+                                    <p class="wallet_item_date_sum_info">15.07.2021</p>
+                                    <p class="wallet_item_date_sum_info minus_sum">-28.00</p>    
+                                     <p class="wallet_item_date_sum_info">Проигрыш</p>
+                                  </div> 
+                                
+                            </div>  
+                                  
+                            <div class="wallet_item" id="wallet_item_open_div2">
+                                <div class="wallet_item_date_sum_wrapper">
+                                       <p class="wallet_item_date_sum_title">Дата</p>
+                                       <p class="wallet_item_date_sum_title">Сумма</p>
+                                       <p class="wallet_item_date_sum_title">Действие</p>
+                                </div>
+                                
+                                <div class="wallet_item_date_sum_wrapper">
+                                  <p class="wallet_item_date_sum_info">12.07.2021</p>
+                                   <p class="wallet_item_date_sum_info">+98.00</p>
+                                   <p class="wallet_item_date_sum_info">Пополнение: Mastercard</p>                       
+                                </div>
+                               
+                                <div class="wallet_item_date_sum_wrapper">
+                                  <p class="wallet_item_date_sum_info">13.07.2021</p>
+                                  <p class="wallet_item_date_sum_info">+16.00</p>
+                                   <p class="wallet_item_date_sum_info">Пополнение: Бонус</p>
+                                   
+                                </div>
+                                <div class="wallet_item_date_sum_wrapper">
+                                   <p class="wallet_item_date_sum_info">15.07.2021</p>
+                                   <p class="wallet_item_date_sum_info minus_sum">-28.00</p>    
+                                    <p class="wallet_item_date_sum_info">Проигрыш</p>
+                                 </div>
+                                
+                           </div>   
+                           <div class="wallet_item" id="wallet_item_open_div3">
+                            <div class="wallet_item_date_sum_wrapper">
+                                   <p class="wallet_item_date_sum_title">Дата</p>
+                                   <p class="wallet_item_date_sum_title">Сумма</p>
+                                   <p class="wallet_item_date_sum_title">Действие</p>
+                            </div>
+                            
+                            <div class="wallet_item_date_sum_wrapper">
+                              <p class="wallet_item_date_sum_info">12.07.2021</p>
+                               <p class="wallet_item_date_sum_info">+98.00</p>
+                               <p class="wallet_item_date_sum_info">Пополнение: Mastercard</p>                       
+                            </div>
+                           
+                            <div class="wallet_item_date_sum_wrapper">
+                              <p class="wallet_item_date_sum_info">13.07.2021</p>
+                              <p class="wallet_item_date_sum_info">+16.00</p>
+                               <p class="wallet_item_date_sum_info">Пополнение: Бонус</p>
+                               
+                            </div>
+                            <div class="wallet_item_date_sum_wrapper">
+                               <p class="wallet_item_date_sum_info">15.07.2021</p>
+                               <p class="wallet_item_date_sum_info minus_sum">-28.00</p>    
+                                <p class="wallet_item_date_sum_info">Проигрыш</p>
+                             </div>
+                            
+                       </div>  
+                       <div class="wallet_item" id="wallet_item_open_div4">
+                        <div class="wallet_item_date_sum_wrapper">
+                               <p class="wallet_item_date_sum_title">Дата</p>
+                               <p class="wallet_item_date_sum_title">Сумма</p>
+                               <p class="wallet_item_date_sum_title">Действие</p>
+                        </div>
+                        
+                        <div class="wallet_item_date_sum_wrapper">
+                          <p class="wallet_item_date_sum_info">12.07.2021</p>
+                           <p class="wallet_item_date_sum_info">+98.00</p>
+                           <p class="wallet_item_date_sum_info">Пополнение: Mastercard</p>                       
+                        </div>
+                       
+                        <div class="wallet_item_date_sum_wrapper">
+                          <p class="wallet_item_date_sum_info">13.07.2021</p>
+                          <p class="wallet_item_date_sum_info">+16.00</p>
+                           <p class="wallet_item_date_sum_info">Пополнение: Бонус</p>
+                           
+                        </div>
+                        <div class="wallet_item_date_sum_wrapper">
+                           <p class="wallet_item_date_sum_info">15.07.2021</p>
+                           <p class="wallet_item_date_sum_info minus_sum">-28.00</p>    
+                            <p class="wallet_item_date_sum_info">Проигрыш</p>
+                         </div>
+                        
+                   </div>  
+                                 
+                   <div class="wallet_item" id="wallet_item_open_div5">
+                    <div class="wallet_item_date_sum_wrapper">
+                           <p class="wallet_item_date_sum_title">Дата</p>
+                           <p class="wallet_item_date_sum_title">Сумма</p>
+                           <p class="wallet_item_date_sum_title">Действие</p>
+                    </div>
+                    
+                    <div class="wallet_item_date_sum_wrapper">
+                      <p class="wallet_item_date_sum_info">12.07.2021</p>
+                       <p class="wallet_item_date_sum_info">+98.00</p>
+                       <p class="wallet_item_date_sum_info">Пополнение: Mastercard</p>                       
+                    </div>
+                   
+                    <div class="wallet_item_date_sum_wrapper">
+                      <p class="wallet_item_date_sum_info">13.07.2021</p>
+                      <p class="wallet_item_date_sum_info">+16.00</p>
+                       <p class="wallet_item_date_sum_info">Пополнение: Бонус</p>
+                       
+                    </div>
+                    <div class="wallet_item_date_sum_wrapper">
+                       <p class="wallet_item_date_sum_info">15.07.2021</p>
+                       <p class="wallet_item_date_sum_info minus_sum">-28.00</p>    
+                        <p class="wallet_item_date_sum_info">Проигрыш</p>
+                     </div>
+                    
+               </div>  
+                    </div>
+            
+          </div>
+    </div>
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).on("click", ".wallet_items_title", function(){
+
+              var data_id = $(this).data("id");
+             $(".wallet_items_title").removeClass("active");
+              $(this).addClass("active");
+             $(".wallet_item").removeClass("open");
+               $("#" + data_id).addClass("open");
+        })  
+
+    </script>
+</body>
+</html>
+
+
+
+

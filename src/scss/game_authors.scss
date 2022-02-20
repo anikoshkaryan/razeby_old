@@ -1,0 +1,205 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game_authors {
+    width: 100%;
+    margin-bottom: 13px;
+  .game_authors_wrapper {
+    background: #3C3C49;
+    border-radius: 30px;
+    padding: 30px 44px 69px 44px;
+    width: 100%;
+    max-width: 1376px;
+    margin: 0 auto;
+  }
+  .game_authors_link {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #3EFF74;
+    display: block;
+    margin-bottom: 12px;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+  }
+  .game_authors_current_link {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+    color: #FFFFFF;
+    margin-bottom: 42px;
+    display: block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+  }
+  .game_authors_items_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .game_author_item {
+    width: 48%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 42px;
+ }
+ .game_author_item_img {
+    width: 99px;
+    height: 130px;
+    margin-right: 45px;
+    & img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+  }
+  .game_author_item_info_wrapper {
+    flex: 1;
+    
+  }
+  .game_author_person_name {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 34px;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+  .game_author_person_info {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+  }
+  .game_author_game_link {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    color: #3EFF74;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    // white-space: nowrap;
+  }
+
+}
+
+
+
+/*media*/
+
+
+@media (max-width: 1420px){
+    .game_authors_wrapper{
+        width: 95%!important;
+        max-width: unset!important;
+    }
+}
+
+@media (min-width: 1251px) and (max-width: 1340px){
+    .game_author_item_img{
+        margin-right: 25px!important;
+    }
+    .game_authors_wrapper{
+        padding: 30px 25px 69px 25px!important;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 1250px){
+     .game_author_item{
+         flex-direction: column;
+         align-items: unset!important;
+     }
+     .game_author_item_img{
+        margin-right: unset!important;
+        margin-bottom: 25px;
+    }
+    .game_authors_wrapper{
+        padding: 30px 25px 69px 25px!important;
+    }
+    .game_author_item_info_wrapper{
+        flex: unset!important;
+
+    }
+}
+
+@media (max-width: 980px){
+    .game_author_game_link{
+        word-break: break-word;
+    }
+}
+
+@media (max-width: 768px){
+    .game_author_item{
+        width: 100%!important;
+    }
+}
+
+
+@media (min-width: 426px) and (max-width: 768px){
+    .game_authors_wrapper{
+        border-radius: 20px!important;
+    }
+    .game_author_person_info{
+        font-size: 16px!important;
+    }
+}
+
+
+@media  (max-width: 425px){
+    .game_author_item{
+        flex-direction: column;
+        align-items: unset!important;
+    }
+    .game_author_item_img{
+       margin-right: unset!important;
+       margin-bottom: 25px;
+   }
+   .game_authors_wrapper{
+       padding: 30px 25px 50px 25px!important;
+   }
+   .game_author_item_info_wrapper{
+       flex: unset!important;
+
+   }
+    .game_authors_wrapper{
+        border-radius: 10px!important;
+    }
+    .game_author_item_img{
+        width: 120px!important;
+        height: 160px!important;
+    }
+    .game_author_person_info{
+        font-size: 14px!important;
+        margin-bottom: 5px;
+    }
+    .game_author_game_link{
+        font-size: 16px!important;
+        line-height: unset!important;
+    }
+    .game_author_person_name{
+        font-size: 22px!important;
+    }
+    .game_authors_current_link{
+        margin-bottom: 30px!important;
+        font-size: 24px!important;
+    }
+    .game_authors_link{
+        margin-bottom: 5px!important;
+    }
+}

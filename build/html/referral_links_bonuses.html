@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/main_logo.svg">
+        <title>Реферальные ссылки и бонусы</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    .referral_links_bonuses {
+        width: 100%;
+        margin-bottom: 13px;
+        margin-top: 12px;
+    }
+    .referral_links_bonuses_wrapper {
+       width: 100%;
+       max-width: 1376px;
+       margin: 0 auto;
+       background: #3C3C49;
+       border-radius: 30px;
+       padding: 40px 26px;
+   }
+   .referral_links_bonuses_link {
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 33px;
+    display: flex;
+    align-items: center;
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+.referral_links_bonuses_link svg {
+    margin-right: 31px;
+}
+
+.referral_links_bonuses_balance_wrapper {
+    max-width: 1224px;
+    width: 100%;
+    margin: 0 auto;
+    height: 90px;
+    background: #22292C;
+    border-radius: 18px;
+    margin-bottom: 33px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 26px;
+    cursor: pointer;
+}
+.referral_links_bonuses_balance_item {
+    display: flex;
+}
+.referral_links_bonuses_balance_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #888888;
+    margin-right: 11px;
+}
+.referral_links_bonuses_balance_num {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    color: #FFFFFF;
+}
+#referral_links_bonuses_balance_first_item{
+    align-items: center;
+}
+
+.referral_links_bonuses_balance_btn {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: right;
+    color: #3EFF74;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.referral_links_bonuses_items_wrapper {
+    max-width: 1224px;
+    width: 100%;
+    margin: 0 auto;
+}
+.referral_links_bonuses_items_titles_wrapper {
+    display: flex;
+    align-items: flex-start;
+    /* margin-bottom: 17px; */
+    max-width: 457px;
+    width: 100%;
+    justify-content: space-between;
+}
+.referral_links_bonuses_items_title {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #3EFF74;
+    cursor: pointer;
+    padding-bottom: 17px;
+    width: 187px;
+    margin: 0 auto;
+    text-align: center;
+
+      
+}
+.referral_links_bonuses_items_title:hover{
+   color: #FFFFFF;
+border-bottom: 2px solid #FFFFFF;
+padding-bottom: 15px;
+}
+.referral_links_bonuses_items_title.active{
+    color: #FFFFFF;
+border-bottom: 2px solid #FFFFFF;
+padding-bottom: 15px;
+}
+.referral_links_bonuses_item_main_line {
+    max-width: 1224px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #000000;
+    margin-bottom: 33px;
+}
+.referral_links_bonuses_item {
+    /* max-width: 445px;
+    width: 100%;  */
+    display: none;
+    justify-content: space-between;
+}
+
+.referral_links_bonuses_item_date_sum_title:first-child{
+    margin-left: 20px;   
+}
+.referral_links_bonuses_item_date_sum_info:first-child{
+    margin-left: 20px;   
+}
+
+.referral_links_bonuses_item.open{
+    display: block!important;
+}
+.referral_links_bonuses_item_date_sum_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #888888;
+    margin: 0 auto;
+}
+.referral_links_bonuses_item_date_sum_info {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #E7E7E7;
+   
+}
+
+.referral_links_bonuses_item_date_sum_info:nth-child(2){
+     word-break: break-all;
+}
+    .minus_sum {
+    color: #FF5894!important;
+}
+.referral_links_bonuses_item_date_sum_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+.referral_links_bonuses_item_line {
+    width: 100%;
+    max-width: 1224px;
+    border: 1px solid #252531;
+    margin-bottom: 20px;
+}
+.referral_links_bonuses_item_date_sum_wrapper:first-child{
+    padding-bottom: 10px;
+}
+.referral_links_bonuses_item_date_sum_wrapper{
+    padding-bottom: 22px;
+}
+.referral_links_bonuses_second_item_date_sum_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 22px;
+}
+.referral_links_bonuses_second_item_date_sum_wrapper:first-child{
+    padding-bottom: 10px;
+}
+.referral_links_bonuses_item_make_btn {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #3EFF74;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.referral_links_bonuses_links_copy_btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-right: 50px;
+}
+.referral_links_bonuses_links_delete_btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+#sum_title{
+    margin-left: -535px;
+}
+.referral_links_bonuses_links_copy_delete_btns_wrapper {
+    display: flex;
+}
+/*media*/
+@media (min-width:601px) and (max-width: 800px){
+    .referral_links_bonuses_wrapper {
+       border-radius: 20px!important;
+    }
+}
+@media (min-width:426px) and (max-width: 600px){
+    .referral_links_bonuses_wrapper {
+       border-radius: 10px!important;
+    }
+}
+@media  (max-width: 425px){
+    .referral_links_bonuses_balance_wrapper {
+    height: 75px!important;
+    }
+    .referral_links_bonuses_item_date_sum_info {
+    font-size: 14px!important;
+    }
+    .referral_links_bonuses_item_make_btn {
+    font-size: 15px!important;
+    }
+    .referral_links_bonuses_links_copy_btn {
+    margin-right: 25px!important;
+}
+    .referral_links_bonuses_wrapper {
+       border-radius: unset!important;
+       padding: 40px 20px!important;
+    }
+    .referral_links_bonuses_item_date_sum_title {
+    font-size: 15px!important;
+}
+.referral_links_bonuses_item_date_sum_title:first-child {
+    margin-left: unset!important;
+}
+.referral_links_bonuses_item_date_sum_info:first-child {
+    margin-left: unset!important;
+}
+
+.referral_links_bonuses_items_title {
+    font-size: 15px!important;
+}
+}
+@media (min-width:426px) and (max-width:541px){
+    .referral_links_bonuses_link svg {
+    margin-right: 12px!important;
+}
+.referral_links_bonuses_link{
+    font-size: 22px!important;
+}
+.referral_links_bonuses_balance_wrapper {
+    padding: 20px 10px!important;
+}
+
+}
+@media (max-width:425px){
+    .referral_links_bonuses_link svg {
+    margin-right: 12px!important;
+}
+.referral_links_bonuses_link{
+    font-size: 18px!important;
+}
+.referral_links_bonuses_balance_wrapper {
+    padding: 20px 10px!important;
+}
+
+}
+@media (min-width:453px) and (max-width: 541px){
+    .referral_links_bonuses_balance_num {
+    font-size: 26px!important;
+}
+.referral_links_bonuses_balance_title {
+    font-size: 14px!important;
+}
+.referral_links_bonuses_balance_btn {
+    font-size: 16px!important;
+}
+}
+@media (max-width: 452px){
+    .referral_links_bonuses_balance_num {
+    font-size: 22px!important;
+}
+.referral_links_bonuses_balance_title {
+    font-size: 12px!important;
+}
+.referral_links_bonuses_balance_btn {
+    font-size: 13px!important;
+}
+.referral_links_bonuses_wrapper {
+    padding: 40px 12px!important;
+}
+.referral_links_bonuses_item_date_sum_info:first-child {
+    margin-left: unset!important;
+}
+.referral_links_bonuses_item_date_sum_title:first-child {
+    margin-left: unset!important;
+}
+}
+
+@media (max-width: 370px){
+    #referral_links_bonuses_balance_first_item{
+        flex-direction: column;
+        align-items: unset!important;
+    }
+}
+@media (min-width: 663px) and (max-width: 850px){
+    .referral_links_bonuses_item_date_sum_title:first-child{
+    margin-right: 80px;
+}
+.referral_links_bonuses_item_date_sum_info:first-child{
+    margin-right: 78px;
+}
+.referral_links_bonuses_item_date_sum_info:nth-child(2){
+    margin-right: 100px;
+}
+#sum_title {
+    margin-left: unset!important;
+}
+}
+
+@media (min-width:426px) and (max-width: 662px){
+    .referral_links_bonuses_item_date_sum_title:first-child{
+    margin-right: 52px;
+}
+.referral_links_bonuses_item_date_sum_info:first-child{
+    margin-right: 50px;
+}
+.referral_links_bonuses_item_date_sum_info:nth-child(2){
+    margin-right: 35px;
+}
+#sum_title {
+    margin-left: unset!important;
+}
+}
+@media (max-width: 425px){
+    .referral_links_bonuses_item_date_sum_title:first-child{
+    margin-right: 30px;
+}
+.referral_links_bonuses_item_date_sum_info:first-child{
+    margin-right: 30px;
+}
+.referral_links_bonuses_item_date_sum_info:nth-child(2){
+    margin-right: 20px;
+}
+#sum_title {
+    margin-left: unset!important;
+}
+}
+@media (min-width:426px) and (max-width: 500px){
+    .referral_links_bonuses_item_date_sum_info {
+    font-size: 16px!important;
+    }
+    .referral_links_bonuses_item_make_btn {
+    font-size: 16px!important;
+    }
+}
+
+ </style>
+
+</head>
+<body>
+    <div class="referral_links_bonuses">
+          <div  class="referral_links_bonuses_wrapper">
+              <a href="" class="referral_links_bonuses_link">
+                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 7H3.83L9.42 1.41L8 0L0 8L8 16L9.41 14.59L3.83 9H16V7Z" fill="#3EFF74"/>
+                    </svg>
+                    Реферальные ссылки и бонусы</a>
+                    <div class="referral_links_bonuses_balance_wrapper">
+                        <div class="referral_links_bonuses_balance_item" id="referral_links_bonuses_balance_first_item">
+                            <p class="referral_links_bonuses_balance_title">Баланс</p>
+                            <p class="referral_links_bonuses_balance_num">1053.00 </p>
+                        </div>
+                        <div class="referral_links_bonuses_balance_item">
+                            <button class="referral_links_bonuses_balance_btn">ВЫВЕСТИ В БАЛАНС</button>
+                            
+                        </div>
+                    </div>
+                    <div class="referral_links_bonuses_items_wrapper">
+                      
+                            <div class="referral_links_bonuses_items_titles_wrapper">
+                                <p class="referral_links_bonuses_items_title active" data-id="referral_links_bonuses_item_open_div1">ПЕРЕХОДЫ</p>
+                                <p class="referral_links_bonuses_items_title" data-id="referral_links_bonuses_item_open_div2">ВЫВОД</p>
+                                <p class="referral_links_bonuses_items_title" data-id="referral_links_bonuses_item_open_div3">ССЫЛКИ</p>
+                            
+                            
+                        </div>
+                        <div class="referral_links_bonuses_item_main_line">
+
+                        </div>
+                            
+                            <div class="referral_links_bonuses_item open" id="referral_links_bonuses_item_open_div1">
+                                 <div class="referral_links_bonuses_item_date_sum_wrapper">
+                                        <p class="referral_links_bonuses_item_date_sum_title">Дата</p>
+                                        <p class="referral_links_bonuses_item_date_sum_title">Переходы</p>
+                                        <p class="referral_links_bonuses_item_date_sum_title">Сумма</p>
+                                        <p class="referral_links_bonuses_item_date_sum_title">Ссылка</p>
+                                 </div>
+                                 <div class="referral_links_bonuses_item_line"></div>
+                                 <div class="referral_links_bonuses_item_date_sum_wrapper">
+                                   <p class="referral_links_bonuses_item_date_sum_info">12.07.2021</p>
+                                   <p class="referral_links_bonuses_item_date_sum_info">120</p>
+                                    <p class="referral_links_bonuses_item_date_sum_info">+98.00</p>
+                                    <p class="referral_links_bonuses_item_date_sum_info">Реф 1</p>                       
+                                 </div>
+                                 <div class="referral_links_bonuses_item_line"></div>
+                                 <div class="referral_links_bonuses_item_date_sum_wrapper">
+                                   <p class="referral_links_bonuses_item_date_sum_info">13.07.2021</p>
+                                   <p class="referral_links_bonuses_item_date_sum_info">35</p>
+                                   <p class="referral_links_bonuses_item_date_sum_info">+16.00</p>
+                                    <p class="referral_links_bonuses_item_date_sum_info">Реф 1</p>
+                                    
+                                 </div>
+                                 <div class="referral_links_bonuses_item_line"></div>
+                                 <div class="referral_links_bonuses_item_date_sum_wrapper">
+                                    <p class="referral_links_bonuses_item_date_sum_info">15.07.2021</p>
+                                    <p class="referral_links_bonuses_item_date_sum_info">25</p>
+                                    <p class="referral_links_bonuses_item_date_sum_info minus_sum">-28.00</p>    
+                                     <p class="referral_links_bonuses_item_date_sum_info">Реф 3</p>
+                                  </div> 
+                                  <div class="referral_links_bonuses_item_line"></div>
+                                
+                            </div>    
+                            <div class="referral_links_bonuses_item" id="referral_links_bonuses_item_open_div2">
+                                <div class="referral_links_bonuses_item_date_sum_wrapper">
+                                    <p class="referral_links_bonuses_item_date_sum_title">Дата</p>
+                                    <p class="referral_links_bonuses_item_date_sum_title">Переходы</p>
+                                    <p class="referral_links_bonuses_item_date_sum_title">Сумма</p>
+                                    <p class="referral_links_bonuses_item_date_sum_title">Ссылка</p>
+                             </div>
+                             <div class="referral_links_bonuses_item_line"></div>
+                             <div class="referral_links_bonuses_item_date_sum_wrapper">
+                               <p class="referral_links_bonuses_item_date_sum_info">12.07.2021</p>
+                               <p class="referral_links_bonuses_item_date_sum_info">120</p>
+                                <p class="referral_links_bonuses_item_date_sum_info">+98.00</p>
+                                <p class="referral_links_bonuses_item_date_sum_info">Реф 1</p>                       
+                             </div>
+                             <div class="referral_links_bonuses_item_line"></div>
+                             <div class="referral_links_bonuses_item_date_sum_wrapper">
+                               <p class="referral_links_bonuses_item_date_sum_info">13.07.2021</p>
+                               <p class="referral_links_bonuses_item_date_sum_info">35</p>
+                               <p class="referral_links_bonuses_item_date_sum_info">+16.00</p>
+                                <p class="referral_links_bonuses_item_date_sum_info">Реф 1</p>
+                                
+                             </div>
+                             <div class="referral_links_bonuses_item_line"></div>
+                             <div class="referral_links_bonuses_item_date_sum_wrapper">
+                                <p class="referral_links_bonuses_item_date_sum_info">15.07.2021</p>
+                                <p class="referral_links_bonuses_item_date_sum_info">25</p>
+                                <p class="referral_links_bonuses_item_date_sum_info minus_sum">-28.00</p>    
+                                 <p class="referral_links_bonuses_item_date_sum_info">Реф 3</p>
+                              </div> 
+                              <div class="referral_links_bonuses_item_line"></div>
+                           </div>   
+                           <div class="referral_links_bonuses_item" id="referral_links_bonuses_item_open_div3">
+                            <div class="referral_links_bonuses_second_item_date_sum_wrapper">
+                                   <p class="referral_links_bonuses_item_date_sum_title">Название</p>
+                                   <p class="referral_links_bonuses_item_date_sum_title" id="sum_title">Ссылка</p>
+                                   <button class="referral_links_bonuses_item_make_btn">+ СОЗДАТЬ</button>
+                            </div>
+                            <div class="referral_links_bonuses_item_line"></div>
+                            <div class="referral_links_bonuses_second_item_date_sum_wrapper">
+                              <p class="referral_links_bonuses_item_date_sum_info">Реф 1</p>
+                               <p class="referral_links_bonuses_item_date_sum_info">razeby.com/file/ES5X748CaMxFbln1BRsThl/Untitled?node-id=798%3A791</p>
+                               <div class="referral_links_bonuses_links_copy_delete_btns_wrapper">
+                                   <button class="referral_links_bonuses_links_copy_btn">
+                                    <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 20H6V6H17V20ZM17 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H17C17.5304 22 18.0391 21.7893 18.4142 21.4142C18.7893 21.0391 19 20.5304 19 20V6C19 5.46957 18.7893 4.96086 18.4142 4.58579C18.0391 4.21071 17.5304 4 17 4ZM14 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V16H2V2H14V0Z" fill="#969696"/>
+                                    </svg>
+                                   </button>
+                                   <button class="referral_links_bonuses_links_delete_btn">
+                                    <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 16C1 16.5304 1.21071 17.0391 1.58579 17.4142C1.96086 17.7893 2.46957 18 3 18H11C11.5304 18 12.0391 17.7893 12.4142 17.4142C12.7893 17.0391 13 16.5304 13 16V4H1V16Z" fill="#969696"/>
+                                    </svg>
+                                        
+                                   </button>
+                               </div>                 
+                            </div>
+                            <div class="referral_links_bonuses_item_line"></div>
+                            <div class="referral_links_bonuses_second_item_date_sum_wrapper">
+                              <p class="referral_links_bonuses_item_date_sum_info">Реф 2</p>
+                              <p class="referral_links_bonuses_item_date_sum_info">razeby.com/file/ES5X748CaMxFbln1BRsThl/Untitled?node-id=798%3A791</p>
+                              <div class="referral_links_bonuses_links_copy_delete_btns_wrapper">
+                                <button class="referral_links_bonuses_links_copy_btn">
+                                 <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <path d="M17 20H6V6H17V20ZM17 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H17C17.5304 22 18.0391 21.7893 18.4142 21.4142C18.7893 21.0391 19 20.5304 19 20V6C19 5.46957 18.7893 4.96086 18.4142 4.58579C18.0391 4.21071 17.5304 4 17 4ZM14 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V16H2V2H14V0Z" fill="#969696"/>
+                                 </svg>
+                                </button>
+                                <button class="referral_links_bonuses_links_delete_btn">
+                                 <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <path d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 16C1 16.5304 1.21071 17.0391 1.58579 17.4142C1.96086 17.7893 2.46957 18 3 18H11C11.5304 18 12.0391 17.7893 12.4142 17.4142C12.7893 17.0391 13 16.5304 13 16V4H1V16Z" fill="#969696"/>
+                                 </svg>
+                                     
+                                </button>
+                            </div>   
+                               
+                            </div>
+                            <div class="referral_links_bonuses_item_line"></div>
+                            <div class="referral_links_bonuses_second_item_date_sum_wrapper">
+                               <p class="referral_links_bonuses_item_date_sum_info">Реф 3</p>
+                               <p class="referral_links_bonuses_item_date_sum_info">razeby.com/file/ES5X748CaMxFbln1BRsThl/Untitled?node-id=798%3A791</p>    
+                               <div class="referral_links_bonuses_links_copy_delete_btns_wrapper">
+                                <button class="referral_links_bonuses_links_copy_btn">
+                                 <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <path d="M17 20H6V6H17V20ZM17 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H17C17.5304 22 18.0391 21.7893 18.4142 21.4142C18.7893 21.0391 19 20.5304 19 20V6C19 5.46957 18.7893 4.96086 18.4142 4.58579C18.0391 4.21071 17.5304 4 17 4ZM14 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V16H2V2H14V0Z" fill="#969696"/>
+                                 </svg>
+                                </button>
+                                <button class="referral_links_bonuses_links_delete_btn">
+                                 <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <path d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 16C1 16.5304 1.21071 17.0391 1.58579 17.4142C1.96086 17.7893 2.46957 18 3 18H11C11.5304 18 12.0391 17.7893 12.4142 17.4142C12.7893 17.0391 13 16.5304 13 16V4H1V16Z" fill="#969696"/>
+                                 </svg>
+                                     
+                                </button>
+                            </div>   
+                             </div>
+                            
+                           </div>  
+                    </div>
+            
+          </div>
+    </div>
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).on("click", ".referral_links_bonuses_items_title", function(){
+
+              var data_id = $(this).data("id");
+             $(".referral_links_bonuses_items_title").removeClass("active");
+              $(this).addClass("active");
+             $(".referral_links_bonuses_item").removeClass("open");
+               $("#" + data_id).addClass("open");
+        })  
+      
+      
+    </script>
+</body>
+</html>
+
+
+
+

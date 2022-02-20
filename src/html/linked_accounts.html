@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/main_logo.svg">
+        <title>Связанные аккаунты</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    .linked_accounts {
+        width: 100%;
+        margin-bottom: 13px;
+        margin-top: 12px;
+    }
+    .linked_accounts_wrapper {
+       width: 100%;
+       max-width: 1376px;
+       margin: 0 auto;
+       background: #3C3C49;
+       border-radius: 30px;
+       padding: 40px 26px;
+   }
+   .linked_accounts_link {
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 51px;
+    display: flex;
+    align-items: center;
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+.linked_accounts_link svg {
+    margin-right: 31px;
+}
+.linked_accounts_items_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.linked_accounts_items_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1212px;
+    width: 100%;
+    margin: 0 auto;
+}
+.linked_accounts_item {
+    max-width: 291px;
+    width: 100%;
+    height: 198px;
+    background: #22292C;
+    border-radius: 18px;
+    padding: 31px 22px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.linked_accounts_item_link {
+    display: block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+}
+.linked_accounts_item_name {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 13px;
+    cursor: pointer;
+}
+.linked_accounts_item_user_name {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #3EFF74;
+    cursor: pointer;
+    margin-bottom: 28px;
+}
+.linked_accounts_item_delete_btn_wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.linked_accounts_item_link_details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.linked_accounts_item_link_wrapper {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 13px;
+}
+.linked_accounts_item_delete_btn {
+    cursor: pointer;
+    outline: none;
+    background: none;
+    border: none;
+}
+.linked_accounts_item.hide{
+    display: none!important;
+}
+/*media*/
+@media (min-width:701px) and (max-width: 1236px){
+    .linked_accounts_item {
+       max-width: unset!important;
+       width: 24%!important;
+    }
+}
+@media (min-width:426px) and (max-width: 700px){
+    .linked_accounts_item {
+       max-width: unset!important;
+       width: 48%!important;
+       margin-bottom: 15px;
+    }
+    .linked_accounts_items_wrapper{
+        flex-wrap: wrap;
+    }
+}
+@media (min-width: 601px) and (max-width:800px){
+    .linked_accounts_wrapper {
+    border-radius: 20px!important;
+}
+}
+@media (min-width: 426px) and (max-width:600px){
+    .linked_accounts_wrapper {
+    border-radius: 10px!important;
+
+}
+}
+
+
+@media (max-width: 425px){
+    .linked_accounts_link{
+        font-size: 20px!important;
+
+    }
+    .linked_accounts_link svg{
+        margin-right: 12px!important;
+
+    }
+    .linked_accounts_item {
+       max-width: unset!important;
+       width: 100%!important;
+       margin-bottom: 15px;
+    }
+    .linked_accounts_items_wrapper{
+        flex-wrap: wrap;
+    }
+    .linked_accounts_wrapper {
+    border-radius: unset!important;
+    padding: 40px 20px!important;
+}
+}
+
+  </style>
+
+</head>
+<body>
+    <div class="linked_accounts">
+          <div  class="linked_accounts_wrapper">
+              <a href="" class="linked_accounts_link">
+                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 7H3.83L9.42 1.41L8 0L0 8L8 16L9.41 14.59L3.83 9H16V7Z" fill="#3EFF74"/>
+                    </svg>
+                  Связанные аккаунты</a>
+                  <div  class="linked_accounts_items_wrapper">
+                        <div class="linked_accounts_item">
+                            <div class="linked_accounts_item_link_details">
+                                <div class="linked_accounts_item_link_wrapper">
+                                    <a href="https://discord.com/" class="linked_accounts_item_link">
+                                       <svg width="42" height="30" viewBox="0 0 42 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                           <path d="M26.8579 0.601141L26.9519 0.566828H26.8921L26.8579 0.601141Z" fill="#6C7DFF"/>
+                                           <path fill-rule="evenodd" clip-rule="evenodd" d="M15.2788 0.563902C15.2788 0.563902 10.4402 0.380902 5.22024 4.19598C5.22024 4.19598 0 13.1875 0 24.2725C0 24.2725 2.89339 29.2486 10.8274 29.4375C10.8274 29.4375 11.9868 27.9131 13.1572 26.572C8.7003 25.2336 6.96596 22.5566 6.96596 22.5566C6.96596 22.5566 7.3532 22.7452 7.93405 23.1285H8.10515C8.18832 23.1285 8.22858 23.1666 8.27096 23.207L8.27864 23.2144V23.2315C8.30777 23.2607 8.33479 23.2878 8.37372 23.3035C8.39544 23.3123 8.42087 23.3174 8.45239 23.3174C17.9272 27.1782 25.8469 28.0706 34.8833 22.3564C34.8833 22.3564 33.1461 25.0333 28.504 26.3717C29.461 27.7043 30.8052 29.2316 30.8052 29.2316C37.3082 29.0909 40.5536 25.7248 41.6093 24.6298C41.7132 24.522 41.7958 24.4361 41.8583 24.3776C41.9359 24.305 41.9825 24.2741 42 24.2954C42 13.2276 36.7485 4.21885 36.7485 4.21885C32.0554 0.772703 27.6697 0.618164 26.8409 0.615238L26.3112 1.1387C32.3059 2.8546 35.2078 5.53443 35.2078 5.53443C20.646 -1.66295 8.45504 4.33323 6.61873 5.23626C6.48417 5.30249 6.40524 5.34132 6.38485 5.34558C6.38485 5.34558 9.28115 2.48008 15.6689 0.949852L15.2788 0.563902ZM31.1384 17.0055C31.1384 19.1217 29.4896 20.8378 27.4647 20.8378C25.4398 20.8378 23.791 19.1217 23.791 17.0225C23.7968 14.9063 25.4485 13.196 27.4647 13.196V13.1875C29.4981 13.1875 31.1384 14.9033 31.1384 17.0055ZM14.3133 20.8378C16.3382 20.8378 17.987 19.1217 17.987 17.0055C17.987 14.9033 16.3496 13.1875 14.3247 13.1875L14.3133 13.196C12.2884 13.196 10.6397 14.9063 10.6397 17.0225C10.6397 19.1217 12.2884 20.8378 14.3133 20.8378Z" fill="#6C7DFF"/>
+                                       </svg>
+                                    </a>
+                                </div>
+                                <p class="linked_accounts_item_name">Discord</p>
+                                <p class="linked_accounts_item_user_name">Vasiliy Pupkin</p>
+                            </div>
+                             <div class="linked_accounts_item_delete_btn_wrapper">
+                                 <button class="linked_accounts_item_delete_btn">
+                                    <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 16C1 16.5304 1.21071 17.0391 1.58579 17.4142C1.96086 17.7893 2.46957 18 3 18H11C11.5304 18 12.0391 17.7893 12.4142 17.4142C12.7893 17.0391 13 16.5304 13 16V4H1V16Z" fill="#969696"/>
+                                    </svg>
+                                 </button>
+                             </div>
+                        </div>
+                        <div class="linked_accounts_item">
+                            <div class="linked_accounts_item_link_details">
+                                 <div class="linked_accounts_item_link_wrapper">
+                                <a href="https://store.steampowered.com/" class="linked_accounts_item_link">
+                                    <svg width="42" height="36" viewBox="0 0 42 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.779004 27.5071L5.38325 29.3184C7.56025 38.1086 20.512 37.2214 21.3765 28.1144L32.027 21.7374C37.7723 21.2981 41.834 16.7026 41.9443 11.3669C42.1368 1.93263 30.669 -3.13188 23.7513 3.44637C21.9103 5.19812 20.7815 7.49062 20.5085 9.97912L14.282 19.3241C12.4025 19.0809 10.5003 19.4974 8.87275 20.5386C7.01425 19.8141 4.67975 18.8779 1.773 17.6424C0.898004 17.2714 -0.0522461 17.9189 -0.0522461 18.8499V26.2856C-0.0522461 26.8246 0.276754 27.3094 0.779004 27.5071ZM27.7448 21.2421L21.1543 25.1866C20.5488 22.9991 19.0403 21.1441 16.9193 20.1011L20.8795 14.1599C21.8298 17.3851 24.306 20.0924 27.7448 21.2421ZM31.194 3.10512C35.737 3.10512 39.4155 6.78537 39.321 11.3126C39.2773 13.4599 38.3918 15.4619 36.8273 16.9494C31.6298 21.9001 22.9218 18.1236 23.0688 10.9854C23.158 6.58412 26.7875 3.10512 31.194 3.10512ZM15.7573 22.4549C20.9898 25.0239 19.1033 32.8516 13.2758 32.8516C11.503 32.8516 9.90175 32.0064 8.8815 30.6939C10.2413 30.9931 13.6538 33.6234 16.6113 30.7026C18.0253 29.3079 18.419 27.3129 17.6368 25.4894C16.8668 23.7166 15.8413 23.2126 12.49 21.9281C13.5785 21.7776 14.7125 21.9404 15.7573 22.4549ZM2.57275 20.8274C13.2968 25.3004 14.6023 25.0956 15.2288 26.5324C15.9813 28.2841 14.1525 30.0359 12.4375 29.2729C12.42 29.2659 12.4008 29.2571 12.3833 29.2501L2.57275 25.3914V20.8274Z" fill="#EAEAEA"/>
+                                    </svg>
+                                 </a>
+                             </div>
+                             <p class="linked_accounts_item_name">Steam</p>
+                             <p class="linked_accounts_item_user_name">v_Pupkin1276</p>
+                            </div>
+                            
+                             <div class="linked_accounts_item_delete_btn_wrapper">
+                                 <button class="linked_accounts_item_delete_btn">
+                                    <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 16C1 16.5304 1.21071 17.0391 1.58579 17.4142C1.96086 17.7893 2.46957 18 3 18H11C11.5304 18 12.0391 17.7893 12.4142 17.4142C12.7893 17.0391 13 16.5304 13 16V4H1V16Z" fill="#969696"/>
+                                    </svg>
+                                 </button>
+                             </div>
+                        </div>
+                        <div class="linked_accounts_item">
+                            <div class="linked_accounts_item_link_details">
+                                <div class="linked_accounts_item_link_wrapper">
+                                <a href="https://vk.com/login" class="linked_accounts_item_link">
+                                    <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 42C32.598 42 42 32.598 42 21C42 9.40202 32.598 0 21 0C9.40202 0 0 9.40202 0 21C0 32.598 9.40202 42 21 42Z" fill="#00A1FF"/>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M20.2066 30.2104H21.8549C21.8549 30.2104 22.3528 30.1558 22.6069 29.8818C22.8409 29.6302 22.8334 29.1578 22.8334 29.1578C22.8334 29.1578 22.8012 26.9462 23.8277 26.6205C24.8395 26.2997 26.1389 28.758 27.5161 29.7032C28.5575 30.4186 29.3489 30.2617 29.3489 30.2617L33.0313 30.2104C33.0313 30.2104 34.9577 30.0918 34.0443 28.5772C33.9694 28.4533 33.5124 27.4568 31.3063 25.4091C28.9974 23.266 29.3066 23.6126 32.088 19.9055C33.7819 17.6478 34.4591 16.2695 34.2476 15.6791C34.0458 15.1169 32.8 15.2655 32.8 15.2655L28.6537 15.2913C28.6537 15.2913 28.3464 15.2494 28.1184 15.3856C27.8957 15.5193 27.7523 15.8307 27.7523 15.8307C27.7523 15.8307 27.0961 17.5778 26.2209 19.0636C24.3746 22.1987 23.6364 22.3642 23.3347 22.1695C22.6328 21.7158 22.808 20.3468 22.808 19.3743C22.808 16.3361 23.2688 15.0693 21.9107 14.7414C21.46 14.6325 21.1283 14.5606 19.9757 14.549C18.4963 14.5336 17.2441 14.5535 16.5351 14.9009C16.0634 15.1318 15.6995 15.6466 15.9211 15.6761C16.1952 15.7128 16.8158 15.8435 17.1449 16.2916C17.5698 16.8695 17.5548 18.1678 17.5548 18.1678C17.5548 18.1678 17.7989 21.7443 16.9847 22.1886C16.4258 22.4933 15.6591 21.8712 14.0131 19.0269C13.1697 17.5699 12.5329 15.9595 12.5329 15.9595C12.5329 15.9595 12.4102 15.6585 12.1912 15.4976C11.9254 15.3025 11.554 15.2404 11.554 15.2404L7.61406 15.2662C7.61406 15.2662 7.02259 15.2827 6.80547 15.5399C6.61231 15.7686 6.79012 16.2418 6.79012 16.2418C6.79012 16.2418 9.87473 23.4584 13.3674 27.0951C16.5699 30.4294 20.2066 30.2104 20.2066 30.2104Z" fill="white"/>
+                                    </svg>
+                                 </a>
+                             </div>
+                             <p class="linked_accounts_item_name">Vkontante</p>
+                             <p class="linked_accounts_item_user_name">Vasiliy Pupkin</p>
+                            </div>
+               
+                             <div class="linked_accounts_item_delete_btn_wrapper">
+                                 <button class="linked_accounts_item_delete_btn">
+                                    <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 16C1 16.5304 1.21071 17.0391 1.58579 17.4142C1.96086 17.7893 2.46957 18 3 18H11C11.5304 18 12.0391 17.7893 12.4142 17.4142C12.7893 17.0391 13 16.5304 13 16V4H1V16Z" fill="#969696"/>
+                                    </svg>
+                                 </button>
+                             </div>
+                        </div>
+                        <div class="linked_accounts_item">
+                            <div class="linked_accounts_item_link_details">
+                              <div class="linked_accounts_item_link_wrapper">
+                                <a href="https://accounts.google.com/o/oauth2/auth?client_id=1033411076631-355sfsrs5as4a76ur92eg0efl0v6igss.apps.googleusercontent.com&amp;redirect_uri=https://www.razeby.ru/functions.php?soc=google&amp;scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile&amp;response_type=code&amp;state=123" class="linked_accounts_item_link">
+                                    <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.84375 21.0004C9.84375 18.9195 10.4171 16.9702 11.4131 15.3011V8.22119H4.33314C1.52316 11.8706 0 16.3183 0 21.0004C0 25.6826 1.52316 30.1303 4.33314 33.7797H11.4131V26.6997C10.4171 25.0306 9.84375 23.0813 9.84375 21.0004Z" fill="#FBBD00"/>
+                                        <path d="M21 32.156L16.0781 37.0779L21 41.9998C25.6823 41.9998 30.1298 40.4766 33.7792 37.6666V30.5942H26.7068C25.0231 31.5939 23.0656 32.156 21 32.156Z" fill="#0F9D58"/>
+                                        <path d="M11.413 26.6992L4.33307 33.7792C4.8894 34.5017 5.49521 35.1936 6.15072 35.8492C10.1171 39.8155 15.3906 41.9999 20.9999 41.9999V32.1562C16.9292 32.1562 13.3614 29.9643 11.413 26.6992Z" fill="#31AA52"/>
+                                        <path d="M42 21.0003C42 19.7226 41.8843 18.4426 41.6561 17.1959L41.4715 16.187H21V26.0308H30.9629C29.9954 27.9553 28.5078 29.5255 26.7067 30.5948L33.7792 37.6672C34.5017 37.1109 35.1936 36.5051 35.8492 35.8496C39.8156 31.8831 42 26.6096 42 21.0003Z" fill="#3C79E6"/>
+                                        <path d="M28.8887 13.1113L29.7587 13.9813L36.7193 7.02081L35.8493 6.15079C31.8829 2.18441 26.6094 0 21 0L16.0781 4.92188L21 9.84375C23.9799 9.84375 26.7815 11.0042 28.8887 13.1113Z" fill="#CF2D48"/>
+                                        <path d="M21 9.84375V0C15.3907 0 10.1172 2.18441 6.15072 6.1507C5.49521 6.80622 4.8894 7.49815 4.33307 8.22076L11.413 15.3007C13.3615 12.0356 16.9293 9.84375 21 9.84375Z" fill="#EB4132"/>
+                                    </svg>
+                                        
+                                 </a>
+                             </div>
+                             <p class="linked_accounts_item_name">Google</p>
+                             <p class="linked_accounts_item_user_name">v_Pupkin1276</p>
+                            </div>
+        
+
+                             <div class="linked_accounts_item_delete_btn_wrapper">
+                                 <button class="linked_accounts_item_delete_btn">
+                                    <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 16C1 16.5304 1.21071 17.0391 1.58579 17.4142C1.96086 17.7893 2.46957 18 3 18H11C11.5304 18 12.0391 17.7893 12.4142 17.4142C12.7893 17.0391 13 16.5304 13 16V4H1V16Z" fill="#969696"/>
+                                    </svg>
+                                 </button>
+                             </div>
+                        </div>
+                   
+                  </div>
+            
+          </div>
+    </div>
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).on("click", ".linked_accounts_item_delete_btn",function(){
+               $(this).closest(".linked_accounts_item").addClass("hide");
+        })
+    </script>
+</body>
+</html>
+
+
+
+

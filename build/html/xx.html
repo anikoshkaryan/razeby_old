@@ -1,0 +1,479 @@
+
+.regions_cities_modal_wrapper {
+    background: #0D151E;
+ box-shadow: 0px 7px 30px rgba(91, 104, 113, 0.31);
+     max-width: 740px;
+     width: 100%;
+     margin: 0 auto;
+     padding: 20px 25px 40px 40px;
+     position: relative;
+         left: 186px;
+ }
+ 
+ .regions_cities_modal{
+ position: fixed;
+ z-index: 9;
+ width: 100%;
+ height: 100%;
+ left: 0;
+ padding-top: 249px;
+ top: 0;
+ margin: 0 auto;
+ overflow: auto;
+ -webkit-animation-name: a;
+ -webkit-animation-duration: 0.4s;
+ animation-name: a;
+ animation-duration: 0.4s;
+ display: none;
+ }
+ 
+ @media (max-width: 1180px){
+     .regions_cities_modal_wrapper {
+         left: unset!important;
+     }
+ }
+ 
+ .regions_cities_modal.open{
+     display: block!important;
+ }
+ 
+ 
+ .regions_cities_modal_title {
+     font-family: "Inter",sans-serif;
+     font-style: normal;
+     font-weight: 600;
+     font-size: 24px;
+     color: #DADADA;
+     text-align: center;
+     margin-bottom: 32px;
+ }
+ 
+ .regions_cities_modal_close {
+     position: absolute;
+     cursor: pointer;
+     right: 20px;
+     top: 25px;
+ }
+ 
+ .search_regions_cities_wrapper {
+     max-width: 675px;
+     width: 100%;
+     display: flex;
+     background: rgba(165, 170, 183, 0.1);
+     border: 1px solid #D2BE8B;
+     box-sizing: border-box;
+     align-items: center;
+     padding: 19px 19px 22px 19px;
+     margin-bottom: 32px;
+ }
+ 
+ .search_regions_cities_icon {
+     margin-right: 13px;
+ }
+ 
+ .search_regions_input {
+     font-family: Inter;
+     font-style: normal;
+     font-weight: normal;
+     font-size: 14px;
+     letter-spacing: -0.006em;
+     color: #9B8E6C;
+     opacity: 0.8;
+     border: none;
+     outline: none;
+     cursor: pointer;
+     background: none;
+ }
+ 
+ 
+ .search_regions_input:placeholder {
+     font-family: "Inter",sans-serif;
+     font-style: normal;
+     font-weight: normal;
+     font-size: 14px;
+     letter-spacing: -0.006em;
+     color: #9B8E6C;
+     opacity: 0.8;
+ 
+ }
+ 
+ .search__btn_clear_btn {
+     font-family: "Open Sans",sans-serif;
+     font-style: normal;
+     font-weight: 600;
+     font-size: 14px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #E5D6A0;
+     background: none;
+     cursor: pointer;
+     padding: 11px 72px;
+     margin-right: 24px;
+     background: #0D151E;
+     opacity: 0.7;
+     border: 1px solid #E5D6A0;
+ }
+ 
+ .search__btn_apply_btn {
+     font-family: "Open Sans",sans-serif;
+     font-style: normal;
+     font-weight: 600;
+     font-size: 14px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #E5D6A0;
+     background: none;
+     cursor: pointer;
+     padding: 11px 72px;
+     background: #0D151E;
+     opacity: 0.7;
+     border: 1px solid #E5D6A0;
+ }
+ 
+ 
+ .search_regions_cities_btns_wrapper {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ 
+ .search_regions_cities_inputs_items_wrapper {
+     display: flex;
+     flex-wrap: wrap;
+      margin-bottom: 30px;
+     height: 25vh;
+     overflow: auto;
+ }
+ 
+ 
+ .search_regions_cities_check_input_wrapper {
+     width: 48%;
+     display: flex;
+     align-items: center;
+ }
+ 
+ 
+ .search_regions_cities_check_input_wrapper {
+     margin-bottom: 36px;
+ }
+ 
+ 
+ .search_filter_input_span {
+     font-family: "Inter",sans-serif;
+     font-style: normal;
+     font-weight: normal;
+     font-size: 14px;
+     letter-spacing: -0.01em;
+     color: #E5D6A0;
+ }
+ 
+ .search_filter_input_label {
+     border: 1px solid #E5D6A0;
+     box-sizing: border-box;
+     display: inline-block;
+     width: 16px;
+     height: 16px;
+     margin-right: 16px;
+     position: relative;
+ }
+ 
+ .search_regions_cities_check_input_wrapper.active .search_filter_input_label:after {
+     content: "";
+     width: 8px;
+     height: 8px;
+     background: #e5d6a0;
+     display: -ms-flexbox;
+     display: flex;
+     -ms-flex-pack: center;
+     justify-content: center;
+     -ms-flex-align: center;
+     align-items: center;
+     position: absolute;
+     transform: translate(35%, 34%);
+ }
+ 
+ 
+ .search__btn_clear_btn:hover {
+     background: #e5d6a0;
+     color: #1f262e;
+ }
+ .search__btn_apply_btn:hover {
+     background: #e5d6a0;
+     color: #1f262e;
+ }
+ 
+ .hidden_body{
+     overflow: hidden!important;
+ }
+ 
+ 
+ 
+ @media (max-width:  770px){
+     .regions_cities_modal_wrapper{
+         max-width: unset!important;
+         height: 100vh;
+     }
+     .regions_cities_modal{
+         padding-top: unset!important;
+     }
+     .search_regions_cities_btns_wrapper {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 18vh!important;
+     background: #0d151e;
+ }
+ 
+ 
+ 
+ }
+ 
+ @media (min-width: 656px) and (max-width: 770px){
+     .regions_cities_modal_close {
+     position: absolute;
+     cursor: pointer;
+     right: 40px!important;
+     top: 36px!important;
+ }
+ }
+ 
+ 
+ @media  (min-width: 551px) and  (max-width: 655px){
+     .regions_cities_modal_close {
+     position: absolute;
+     cursor: pointer;
+     right: 20px!important;
+     top: 36px!important;
+ }
+ }
+ 
+ @media (min-width: 661px) and (max-width: 770px){
+     .regions_cities_modal_title {
+     font-size: 36px!important;
+ }
+ }
+ 
+ 
+ @media (min-width: 551px) and  (max-width: 660px){
+     .regions_cities_modal_title {
+     font-size: 32px!important;
+ }
+ }
+ @media (min-width: 496px) and  (max-width: 550px){
+     .regions_cities_modal_title {
+     font-size: 28px!important;
+ }
+   .regions_cities_modal_close {
+     position: absolute;
+     cursor: pointer;
+     right: 20px!important;
+     top: 30px!important;
+ }
+ }
+ 
+ @media  (max-width: 426px) and (max-width: 495px){
+     .regions_cities_modal_title {
+     font-size: 26px!important;
+         text-align: left!important;
+ }
+   .regions_cities_modal_close {
+     position: absolute;
+     cursor: pointer;
+     right: 20px!important;
+     top: 30px!important;
+ }
+ }
+ @media (min-width: 571px) and (max-width: 770px){
+     .regions_cities_modal_wrapper{
+     padding: 24px 40px 40px 40px!important;
+ }
+ }
+ 
+ @media  (max-width: 570px){
+     .regions_cities_modal_wrapper{
+     padding: 24px 20px 40px 20px!important;
+ }
+ }
+ 
+ @media (max-width:  436px){
+     .regions_cities_modal_title {
+     width: 266px;
+ }
+ }
+ 
+ @media (min-width: 426px) and (max-width: 512px){
+     .search__btn_clear_btn
+     {
+          padding: 11px 50px!important;
+     }
+    .search__btn_apply_btn{
+      padding: 11px 50px!important;
+ 
+    }
+ }
+ 
+ @media (min-width: 346px) and  (max-width: 425px){
+     .search__btn_clear_btn
+     {
+          padding: 11px 40px!important;
+              margin-right: 10px!important;
+     }
+    .search__btn_apply_btn{
+      padding: 11px 40px!important;
+ 
+    }
+ }
+ 
+ @media   (max-width: 345px){
+     .search__btn_clear_btn
+     {
+          padding: 11px 30px!important;
+              margin-right: 10px!important;
+     }
+    .search__btn_apply_btn{
+      padding: 11px 30px!important;
+ 
+    }
+ }
+ 
+ @media (max-width: 425px){
+     .search_regions_cities_check_input_wrapper {
+     width: 100%!important;
+     display: flex;
+     align-items: center;
+ }
+ .regions_cities_modal_close svg{
+     width: 22px!important;
+     height: 22px!important;
+ }
+   .regions_cities_modal_title {
+     font-size: 24px!important;
+         text-align: left!important;
+         margin-bottom: 24px!important;
+ }
+   .regions_cities_modal_close {
+     position: absolute;
+     cursor: pointer;
+     right: 20px!important;
+     top: 30px!important;
+ }
+ .search_regions_cities_wrapper{
+     height: 48px;
+   margin-bottom: 24px!important;
+ }
+ .search_regions_cities_check_input_wrapper {
+     margin-bottom: 32px!important;
+ }
+ }
+
+ 
+$(document).on("click", ".regions_btn", function(){
+    $(".regions_cities_modal").addClass("open");
+    $("body").addClass(".hidden_body");
+
+})
+
+
+$(document).on("click", ".regions_cities_modal_close", function(){
+    $(".regions_cities_modal").removeClass("open");
+    $("body").removeClass(".hidden_body");
+
+})
+
+
+
+    <!--region & cities-->
+     
+    <div class="regions_cities_modal">
+        <form  action="" class="regions_cities_modal_wrapper">
+            <h1 class="regions_cities_modal_title">Выберите город или регион</h1>
+            <div class="regions_cities_modal_close"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                  <path d="M25 25L1 1" stroke="#D2BE8B" stroke-width="2" stroke-linecap="round"/>
+                   <path d="M1 25L25 1" stroke="#D2BE8B" stroke-width="2" stroke-linecap="round"/>
+                   </svg>
+            </div>
+            <div class="search_regions_cities_wrapper">
+                       <div class="search_regions_cities_icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M10.3636 3C8.90722 3 7.48354 3.43187 6.2726 4.24099C5.06167 5.05011 4.11786 6.20015 3.56052 7.54567C3.00319 8.89119 2.85737 10.3718 3.14149 11.8002C3.42562 13.2286 4.12693 14.5406 5.15675 15.5704C6.18657 16.6003 7.49863 17.3016 8.92703 17.5857C10.3554 17.8698 11.836 17.724 13.1815 17.1667C14.527 16.6093 15.6771 15.6655 16.4862 14.4546C17.2953 13.2437 17.7272 11.82 17.7272 10.3636C17.7271 8.41069 16.9512 6.5378 15.5703 5.15688C14.1894 3.77597 12.3165 3.00012 10.3636 3V3Z" stroke="#D2BE8B" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M15.8574 15.8574L21.0001 21.0001" stroke="#D2BE8B" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+                          </svg>
+                       </div>
+                       <input type="" name="" placeholder="Найти город или регион" class="search_regions_input">
+            </div>
+           <div class="search_regions_cities_inputs_items_wrapper">
+            <div class="search_regions_cities_check_input_wrapper">
+               <label class="search_filter_input_label" for="search_input1"></label>
+                <input type="checkbox" value="" name="" class="search_filter_input" id="search_input1" hidden="" >
+               
+                  <span class="search_filter_input_span">Москва</span>
+            </div>
+            <div class="search_regions_cities_check_input_wrapper">
+                   <label class="search_filter_input_label" for="search_input2"></label>
+                <input type="checkbox" value="" name="" class="search_filter_input" id="search_input2" hidden="" >
+                  <span class="search_filter_input_span">Апрелевка</span>
+            </div>
+            <div class="search_regions_cities_check_input_wrapper">
+                 <label class="search_filter_input_label" for="search_input3"></label>
+                <input type="checkbox" value="" name="" class="search_filter_input" id="search_input3" hidden="" >
+                 <span class="search_filter_input_span">Балашиха</span>
+            </div>
+            <div class="search_regions_cities_check_input_wrapper">
+                   <label class="search_filter_input_label" for="search_input4"></label>
+              
+                <input type="checkbox" value="" name="" class="search_filter_input" id="search_input4" hidden="" >
+                  <span class="search_filter_input_span">Белоозёрский</span>
+           </div>
+           <div class="search_regions_cities_check_input_wrapper">
+                  <label class="search_filter_input_label" for="search_input5"></label>
+                
+                <input type="checkbox" value="" name="" class="search_filter_input" id="search_input5" hidden="" >
+                <span class="search_filter_input_span">Москва</span>
+            </div>
+            <div class="search_regions_cities_check_input_wrapper">
+                <label class="search_filter_input_label" for="search_input6"></label>
+           
+                <input type="checkbox" value="" name="" class="search_filter_input" id="search_input6" hidden="" >
+                     <span class="search_filter_input_span">Апрелевка</span>
+            </div>
+            <div class="search_regions_cities_check_input_wrapper">
+                  <label class="search_filter_input_label" for="search_input7"></label>
+                <input type="checkbox" value="" name="" class="search_filter_input" id="search_input7" hidden="" >
+                 <span class="search_filter_input_span">Балашиха</span>
+            </div>
+            <div class="search_regions_cities_check_input_wrapper">
+                  <label class="search_filter_input_label" for="search_input8"></label>
+                <input type="checkbox" value="" name="" class="search_filter_input" id="search_input8" hidden="" >
+                  <span class="search_filter_input_span">Белоозёрский</span>
+           </div>
+          </div>
+          <div class="search_regions_cities_btns_wrapper">
+               <button class="search__btn_clear_btn" type="button">Очистить</button>
+               <button class="search__btn_apply_btn" type="button">Применить</button>
+          </div>
+            
+        </form>
+   </div>
+
+   $(document).on("change", ".search_filter_input", function(){
+    if($(this).parent().hasClass("active")){
+            $(this).parent().removeClass("active");
+    }else{
+            $(this).parent().addClass("active");
+
+    }
+})
+
+
+$(document).on("click", ".search__btn_clear_btn", function(){
+    $(".search_filter_input").prop( "checked", false );
+    $(".search_filter_input").parent().removeClass("active");
+
+})

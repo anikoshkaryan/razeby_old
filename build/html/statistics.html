@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+        <title>Главная</title>
+  <style>
+      *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+     .statistics {
+       width: 100%;
+       max-width: 1376px;
+       background: #3C3C49;
+       border-radius: 30px;
+       margin: 0 auto;
+       margin-top: 12px;
+       margin-bottom: 13px;
+       padding-top: 31px;
+       padding-bottom: 74px;
+     }
+     .statistics_wrapper {
+       max-width: 1224px;
+       width: 100%;
+       margin: 0 auto;
+    }
+    .statistics_title {
+        font-family: 'Montserrat', sans-serif;
+       font-style: normal;
+       font-weight: 600;
+       font-size: 26px;
+       line-height: 32px;
+        color: #FFFFFF;
+       margin-bottom: 30px;
+   }
+   .statistics_item_titles_wrapper {
+      display: flex;
+      border-bottom: 1px solid #000000;
+      margin-bottom: 24px;
+  }
+  .statistics_item_title {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #3EFF74;
+    width: 240px;
+    padding-left: 30px;
+    cursor: pointer;
+    padding-bottom: 15px;
+  }
+  .statistics_item_title:hover{
+    color: #FFFFFF!important;
+    border-bottom: 1px solid #FFFFFF;
+    padding-bottom: 14px!important;
+  }
+  .statistics_item_title.active{
+    color: #FFFFFF!important;
+    border-bottom: 1px solid #FFFFFF;
+    padding-bottom: 14px!important;
+  }
+  .statistics_item_name_select_wrapper {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    margin-bottom: 50px;
+}
+
+.statistics_item_img {
+    display: none;
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+}
+.statistics_item_img_user_name_wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.statistics_item_name_box {
+    width: 36px;
+    height: 36px;
+    background: #FF367E;
+    border-radius: 100%;
+    display: flex;
+    margin-right: 12px;
+    justify-content: center;
+    align-items: center;
+}
+.statistics_item_img_name {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+.statistics_item_user_name {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+.statistics_item_select_wrapper {
+    max-width: 351px;
+    width: 100%;
+    padding: 12px;
+    background: #22292C;
+    border-radius: 6px;
+    position: relative;
+}
+.statistics_item_select_hidden_wrapper {
+    display: none;
+    position: absolute;
+    width: 100%;
+    padding: 12px;
+    background: #22292C;
+    left: 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    z-index: 9;
+}
+.statistics_item_select_hidden_wrapper.open {
+    display: block!important;
+}
+.statistics_item_select_title_dropdown_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.statistics_item_select_title {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #E7E7E7;
+}
+.statistics_item_select_hidden_info{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #E7E7E7;
+    cursor: pointer;
+}
+.statistics_item_diagram_wrapper {
+    width: 100%;
+    max-width: 726px;
+    margin: 0 auto;
+}
+.statistics_item_game_scores_wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.statistics_item_games_scores_details_items_wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.total_game_scores_wrapper {
+    padding: 14px 25px 0 25px;
+    margin-right: 60px;
+}
+.statistics_item_game_scores_details_wrapper {
+    width: 160px;
+    background: #22292C;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.total_game_win_loss_wrapper_second {
+    display: flex;
+    width: 100px;
+    justify-content: space-between;
+   
+}
+.statistics_item_game_scores_details_img {
+    width: 160px;
+    height: 32px;
+}
+
+.total_game_win_loss_wrapper_second:first-child{
+     margin-bottom: 15px;
+}
+.total_game_win_loss_wrapper_second:nth-child(2){
+     margin-bottom: 5px;
+}
+.total_game_win_info1 {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #69B671;
+}
+.total_game_loss_info1 {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FF367E;
+}
+.total_game_win_info2 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #69B671;
+}
+.total_game_loss_info2 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FF367E;
+}
+.total_game_win_info_second {
+    position: relative;
+    border-right: 2px solid #888888;
+    padding-right: 22px;
+}
+/* .total_game_win_info_second::after{
+    position: absolute;
+    content: "";
+    border: 2px solid #888888;
+    height: 22px;
+    top: -2px;
+    left: 51px;
+} */
+.total_game_title {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.total_game_win_loss_wrapper2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.item1{
+    margin-right: 16px;
+}
+.statistics_item_game_scores_details_wrapper:nth-child(2){
+    margin-right: 16px;
+}
+.game_win_info3 {
+    border-right: 2px solid #888888;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+#myChart{
+    width: 100%!important;
+    max-width: 720px!important;
+    height: 250px!important;
+}
+#myChart2{
+    width: 100%!important;
+    max-width: 720px!important;
+    height: 263px!important;
+    margin-bottom: 43px;
+}
+.statistics_item{
+    display: none;
+}
+.statistics_item.open{
+    display: block!important;
+}
+.statistics_item_search_form_select_wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 41px;
+}
+.statistics_item_search_form {
+    max-width: 351px;
+    width: 100%;
+    background: #22292C;
+    border-radius: 6px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.statistics_item_search_form_input {
+    border: none;
+    background-color: unset;
+    width: 90%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #e7e7e74d;
+    cursor: pointer;
+    outline: none;
+}
+.statistics_item_search_form_input::placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #e7e7e74d;
+}
+.statistics_item_search_form_btn {
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+    outline: none;
+}
+.statistics_item_user_info_details_chart_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.statistics_item_user_info_details_wrapper {
+    width: 100%;
+    max-width: 484px;
+    margin-right: 93px;
+}
+.statistics_item_user_info_details_item {
+    display: flex;
+    border-bottom: 1px solid #252531;
+    justify-content: space-between;
+    padding: 10px 0;
+    align-items: center;
+}
+.user_title {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #888888;
+}
+.user_info_details_item_win_loss_info {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #888888;
+  
+}
+
+.user_info_details_item_win_loss_info:not(:last-child){
+      margin-right: 10px;
+}
+.user_info_details_item_win_loss {
+    display: flex;
+}
+.user_info_pics_name {
+    display: none;
+}
+.statistics_item_user_name_pics_main_wrapper {
+    display: flex;
+    align-items: center;
+}
+.user_info_img_name_wrapper {
+    margin-right: 15px;
+}
+.user_info_img_name_wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.user_player_name {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
+.player_scores_wrapper {
+    display: flex;
+}
+.player_win_score {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #3EFF74;
+
+}
+
+
+.user_info_details_item_win_loss_info_line {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #888888;
+    margin: 0 10px;
+}
+.player_loss_score {
+    color: #FF367E;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+}
+.user_title {
+    flex: 6;
+}
+.user_box {
+    flex: 1;
+}
+.statistics_item_user_chart_details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 23px;
+    align-items: center;
+    width: 295px;
+}
+.statistics_item_games_name {
+    margin-right: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+.statistics_item_games_name_scores_item {
+    display: flex;
+    margin-bottom: 17px;
+    /* width: 172px; */
+}
+.statistics_item_games_win_scores {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #69B671;
+}
+.statistics_item_games_loss_scores{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FF367E;
+}
+.statistics_item_games_scores_item {
+    display: flex;
+}
+.statistics_item_user_chart_details_wrapper {
+    width: 100%;
+    max-width: 726px;
+}
+
+
+@media (max-width: 1250px){
+    .statistics_wrapper {
+    max-width: unset!important;
+    width: 95%!important;
+    margin: 0 auto;
+}
+
+}
+
+.user_info_img {
+    width: 42px;
+    height: 42px;
+}
+@media (max-width: 700px){
+    .total_game_win_info_second{
+        padding-left: unset!important;
+        width: 52%!important;
+    }
+    .total_game_win_info_second::after{
+        left: 121px!important;
+    }
+    .statistics_item_game_scores_wrapper {
+    flex-wrap: wrap;
+}
+.statistics_item_game_scores_details_wrapper {
+    width: 48%;
+    margin-bottom: 20px;
+}
+.total_game_scores_wrapper
+{
+    margin-right: unset!important;
+}
+.item1{
+    margin-right: unset!important;
+}
+.statistics_item_game_scores_details_img{
+    width: 100%!important;
+}
+.statistics_item_game_scores_details_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.total_game_win_loss_wrapper_second {
+    width: 100%!important;
+}
+}
+
+@media (min-width: 426px) and (max-width: 750px){
+    .statistics {
+    border-radius: 20px!important;
+    }
+}
+@media (max-width: 425px){
+    .statistics {
+    border-radius: 10px!important;
+    }
+}
+@media (max-width: 540px){
+    .statistics_item_name_select_wrapper {
+    flex-direction: column;
+    margin-bottom: 40px!important;
+}
+.statistics_item_img_user_name_wrapper {
+    margin-bottom: 12px;
+
+
+}
+.statistics_item_select_wrapper{
+    max-width: unset!important;
+}
+.statistics{
+    padding-bottom: 60px!important;
+}
+
+
+
+}
+@media (max-width: 750px)
+{
+    .statistics_item_user_info_details_chart_wrapper {
+    flex-direction: column;
+}
+
+.statistics_item_user_info_details_wrapper {
+    width: 100%;
+    max-width: unset!important;
+    margin-right: unset!important;
+    margin-bottom: 40px;
+}
+.statistics_item_user_chart_details_wrapper {
+    max-width: unset!important;
+}
+    .statistics_item_search_form{
+        max-width: unset!important;
+        margin-bottom: 20px;
+    }
+   #open_div2 .statistics_item_select_wrapper{
+        max-width: unset!important;
+    }
+.statistics_item_search_form_select_wrapper {
+    flex-direction: column;
+}   
+}
+@media (max-width: 425px){
+    .user_info_img {
+    width: 35px!important;
+    height: 35px!important;
+}
+.statistics_title {
+    font-size: 24px!important;
+    line-height: unset!important;
+    color: #FFFFFF;
+    margin-bottom: 20px!important;
+}
+.user_info_img_name_wrapper {
+    margin-right: 10px!important;
+}
+    .user_player_name {
+    font-size: 16px!important;
+    }
+    .statistics_item_select_title{
+        font-size: 16px!important;
+    }
+    .statistics_item_select_hidden_info{
+        font-size: 16px!important;
+    }
+    .total_game_win_info2{
+        font-size: 18px!important;
+    }
+    .total_game_loss_info2{
+        font-size: 18px!important;
+    }
+    .total_game_title{
+        font-size: 14px!important;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 441px){
+    .statistics_item_title{
+        font-size: 16px!important;
+        width: 210px!important;
+        padding-left: 20px!important;
+    }
+}
+
+@media (min-width: 341px) and  (max-width: 375px){
+    .statistics_item_title{
+        font-size: 14px!important;
+        width: 190px!important;
+        padding-left: 20px!important;
+    }
+}
+
+@media  (max-width: 340px){
+    .statistics_item_title{
+        font-size: 13px!important;
+        width: 170px!important;
+        padding-left: 10px!important;
+    }
+}
+ </style>
+</head>
+<body>
+   <div class="razeby_wrapper">
+         
+         <main> 
+              <section class="statistics">
+                  <div class="statistics_wrapper">
+                     <h1 class="statistics_title">Статистика</h1>
+                     <div class="statistics_items_titles_main_wrapper">
+                         <div  class="statistics_item_titles_wrapper">
+                             <p class="statistics_item_title active" data-id="open_div1" id="first_title">МОЯ СТАТИСТИКА</p>
+                             <p class="statistics_item_title" data-id="open_div2">ДРУГИЕ ИГРОКИ</p>
+                         </div>
+                         <div class="statistics_item open" id="open_div1">
+                             <div class="statistics_item_name_select_wrapper">  
+                                 <div  class="statistics_item_img_user_name_wrapper">
+                                     <div class="statistics_item_img_name_wrapper">
+                                     <div class="statistics_item_img">
+                                         <img src="" alt="">
+                                     </div>
+                                     <div class="statistics_item_name_box">
+                                          <p class="statistics_item_img_name">VP</p>
+                                     </div>
+                                    </div> 
+                                     <p  class="statistics_item_user_name">
+                                        Vasiliy Pupkin
+                                     </p>
+                                 </div>
+                                 <div class="statistics_item_select_wrapper">
+                                     <div class="statistics_item_select_title_dropdown_wrapper">
+                                         <p class="statistics_item_select_title">За месяц</p>
+                                         <div class="statistics_item_select_dropdown">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7 10L12 15L17 10H7Z" fill="#969696"/>
+                                            </svg>
+                                                
+                                         </div>
+                                     </div>
+                                     <div class="statistics_item_select_hidden_wrapper">
+                                        <p class="statistics_item_select_hidden_info" data-value="За месяц" data-name="За месяц">За месяц</p>
+                                        <p class="statistics_item_select_hidden_info" data-value="на месяц" data-name="на месяц">на месяц</p>
+                                        <p class="statistics_item_select_hidden_info" data-value="За месяц" data-name="За месяц">За месяц</p>
+                                        <p class="statistics_item_select_hidden_info" data-value="на месяц" data-name="на месяц">на месяц</p>
+                                        <p class="statistics_item_select_hidden_info" data-value="За месяц" data-name="За месяц">За месяц</p>
+                                        <p class="statistics_item_select_hidden_info" data-value="на месяц" data-name="на месяц">на месяц</p>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="statistics_item_diagram_wrapper">
+                                <div  class="statistics_item_game_scores_wrapper">
+                                    <div class="statistics_item_game_scores_details_wrapper total_game_scores_wrapper">
+                                        <div class="total_game_win_loss_wrapper total_game_win_loss_wrapper_second">
+                                            <p class="total_game_win_info1">WIN</p>
+                                            <!-- <p class="user_info_details_item_win_loss_info_line">
+                                                |
+                                            </p> -->
+                                            <p class="total_game_loss_info1">LOSS</p>
+                                            
+                                        </div>
+                                        <div class="total_game_win_loss_wrapper total_game_win_loss_wrapper_second">
+                                            <p class="total_game_win_info2 total_game_win_info_second">145</p>
+                                            <!-- <p class="user_info_details_item_win_loss_info_line">
+                                                |
+                                            </p> -->
+                                            <p class="total_game_loss_info2">97</p>
+                                            
+                                        </div>
+                                        <p class="total_game_title">ВСЕГО</p>
+                                    </div>
+                             
+                                        <div class="statistics_item_game_scores_details_wrapper item1">
+                                            <div  class="statistics_item_game_scores_details_img">
+                                                <img src="../images/score_img1.png" alt="">
+                                            </div>
+                                            <div class="total_game_win_loss_wrapper2">
+                                                <p class="total_game_win_info2 game_win_info3">35</p>
+                                                <!-- <p class="user_info_details_item_win_loss_info_line">
+                                                    |
+                                                </p> -->
+                                                <p class="total_game_loss_info2">26</p>
+                                                
+                                            </div>
+                                            <p class="total_game_title">DOTA 2</p>
+                                       </div>
+                                    
+                                      <div class="statistics_item_game_scores_details_wrapper item1">
+                                        <div  class="statistics_item_game_scores_details_img">
+                                            <img src="../images/score_img2.png" alt="">
+                                        </div>
+                                        <div class="total_game_win_loss_wrapper2">
+                                            <p class="total_game_win_info2 game_win_info3">35</p>
+                                            <!-- <p class="user_info_details_item_win_loss_info_line">
+                                                |
+                                            </p> -->
+                                            <p class="total_game_loss_info2">26</p>
+                                            
+                                        </div>
+                                        <p class="total_game_title">FORTNITE</p>
+                                   </div>
+                                   <div class="statistics_item_game_scores_details_wrapper item1">
+                                    <div  class="statistics_item_game_scores_details_img">
+                                        <img src="../images/score_img3.png" alt="">
+                                    </div>
+                                    <div class="total_game_win_loss_wrapper2">
+                                        <p class="total_game_win_info2 game_win_info3">27</p>
+                                        <p class="total_game_loss_info2">18</p>
+                                        
+                                    </div>
+                                    <p class="total_game_title">VALORANT</p>
+                               </div>
+                                    
+                                  
+                                </div>
+                                <canvas id="myChart"></canvas>
+                                
+                             </div>
+                         </div>
+                         <div class="statistics_item" id="open_div2">
+                            <div class="statistics_item_search_form_select_wrapper"> 
+                              <form action="" class="statistics_item_search_form">
+                                 <input type="text" placeholder="Найти игрока" class="statistics_item_search_form_input">
+                                 <button class="statistics_item_search_form_btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.5 3C11.2239 3 12.8772 3.68482 14.0962 4.90381C15.3152 6.12279 16 7.77609 16 9.5C16 11.11 15.41 12.59 14.44 13.73L14.71 14H15.5L20.5 19L19 20.5L14 15.5V14.71L13.73 14.44C12.59 15.41 11.11 16 9.5 16C7.77609 16 6.12279 15.3152 4.90381 14.0962C3.68482 12.8772 3 11.2239 3 9.5C3 7.77609 3.68482 6.12279 4.90381 4.90381C6.12279 3.68482 7.77609 3 9.5 3ZM9.5 5C7 5 5 7 5 9.5C5 12 7 14 9.5 14C12 14 14 12 14 9.5C14 7 12 5 9.5 5Z" fill="#969696"/>
+                                    </svg>
+                                        
+                                 </button>
+                             </form>
+                            <div class="statistics_item_select_wrapper">
+                                <div class="statistics_item_select_title_dropdown_wrapper">
+                                    <p class="statistics_item_select_title">За месяц</p>
+                                    <div class="statistics_item_select_dropdown">
+                                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                           <path d="M7 10L12 15L17 10H7Z" fill="#969696"/>
+                                       </svg>
+                                           
+                                    </div>
+                                </div>
+                                <div class="statistics_item_select_hidden_wrapper">
+                                   <p class="statistics_item_select_hidden_info" data-value="За месяц" data-name="За месяц">За месяц</p>
+                                   <p class="statistics_item_select_hidden_info" data-value="на месяц" data-name="на месяц">на месяц</p>
+                                   <p class="statistics_item_select_hidden_info" data-value="За месяц" data-name="За месяц">За месяц</p>
+                                   <p class="statistics_item_select_hidden_info" data-value="на месяц" data-name="на месяц">на месяц</p>
+                                   <p class="statistics_item_select_hidden_info" data-value="За месяц" data-name="За месяц">За месяц</p>
+                                   <p class="statistics_item_select_hidden_info" data-value="на месяц" data-name="на месяц">на месяц</p>
+                                </div>
+                            </div>
+
+                            </div>
+                            <div class="statistics_item_user_info_details_chart_wrapper">
+                               <div  class="statistics_item_user_info_details_wrapper">
+                                   <div class="statistics_item_user_info_details_item">
+                                       <div class="user_box"></div>
+                                    <p class="user_title">Игрок</p>
+                                    <div class="user_info_details_item_win_loss">
+                                        <p class="user_info_details_item_win_loss_info">Win</p>
+                                        <p class="user_info_details_item_win_loss_info">Loss</p>
+                                    </div>
+                                   </div>
+                                   <div class="statistics_item_user_info_details_item">
+                                       <div class="statistics_item_user_name_pics_main_wrapper">
+                                           <div class="user_info_img_name_wrapper">
+                                          <div class="user_info_img">
+                                              <img src="../images/user_statistics1.png" alt="">
+                                          </div>
+                                          <div class="user_info_pics_name">
+                                                  <p class="user_info_pics_name_info"></p>
+                                          </div>
+                                       </div>
+                                       <p class="user_player_name">Сергей Ермолов</p>
+                                       </div>
+                                       <div class="player_scores_wrapper">
+                                           <p class="player_win_score">214</p>
+                                           <p class="user_info_details_item_win_loss_info_line">/</p>
+                                           <p class="player_loss_score">52</p>
+                                       </div>
+                                   </div>
+                                   <div class="statistics_item_user_info_details_item">
+                                    <div class="statistics_item_user_name_pics_main_wrapper">
+                                        <div class="user_info_img_name_wrapper">
+                                       <div class="user_info_img">
+                                           <img src="../images/user_statistics2.png" alt="">
+                                       </div>
+                                       <div class="user_info_pics_name">
+                                               <p class="user_info_pics_name_info"></p>
+                                       </div>
+                                    </div>
+                                    <p class="user_player_name">Вован Вован</p>
+                                    </div>
+                                    <div class="player_scores_wrapper">
+                                        <p class="player_win_score">198</p>
+                                        <p class="user_info_details_item_win_loss_info_line">/</p>
+                                        <p class="player_loss_score">65</p>
+                                    </div>
+                                </div>
+                                <div class="statistics_item_user_info_details_item">
+                                    <div class="statistics_item_user_name_pics_main_wrapper">
+                                        <div class="user_info_img_name_wrapper">
+                                       <div class="user_info_img">
+                                           <img src="../images/user_statistics3.png" alt="">
+                                       </div>
+                                       <div class="user_info_pics_name">
+                                               <p class="user_info_pics_name_info"></p>
+                                       </div>
+                                    </div>
+                                    <p class="user_player_name">Fimochka</p>
+                                    </div>
+                                    <div class="player_scores_wrapper">
+                                        <p class="player_win_score">147</p>
+                                        <p class="user_info_details_item_win_loss_info_line">/</p>
+                                        <p class="player_loss_score">32</p>
+                                    </div>
+                                </div>
+                                <div class="statistics_item_user_info_details_item">
+                                    <div class="statistics_item_user_name_pics_main_wrapper">
+                                        <div class="user_info_img_name_wrapper">
+                                       <div class="user_info_img">
+                                           <img src="../images/user_statistics4.png" alt="">
+                                       </div>
+                                       <div class="user_info_pics_name">
+                                               <p class="user_info_pics_name_info"></p>
+                                       </div>
+                                    </div>
+                                    <p class="user_player_name">Exxxtraas Dragon</p>
+                                    </div>
+                                    <div class="player_scores_wrapper">
+                                        <p class="player_win_score">173</p>
+                                        <p class="user_info_details_item_win_loss_info_line">/</p>
+                                        <p class="player_loss_score">87</p>
+                                    </div>
+                                </div>
+                                <div class="statistics_item_user_info_details_item">
+                                    <div class="statistics_item_user_name_pics_main_wrapper">
+                                        <div class="user_info_img_name_wrapper">
+                                       <div class="user_info_img">
+                                           <img src="../images/user_statistics1.png" alt="">
+                                       </div>
+                                       <div class="user_info_pics_name">
+                                               <p class="user_info_pics_name_info"></p>
+                                       </div>
+                                    </div>
+                                    <p class="user_player_name">Сергей Ермолов</p>
+                                    </div>
+                                    <div class="player_scores_wrapper">
+                                        <p class="player_win_score">214</p>
+                                        <p class="user_info_details_item_win_loss_info_line">/</p>
+                                        <p class="player_loss_score">52</p>
+                                    </div>
+                                </div>
+                                <div class="statistics_item_user_info_details_item">
+                                 <div class="statistics_item_user_name_pics_main_wrapper">
+                                     <div class="user_info_img_name_wrapper">
+                                    <div class="user_info_img">
+                                        <img src="../images/user_statistics2.png" alt="">
+                                    </div>
+                                    <div class="user_info_pics_name">
+                                            <p class="user_info_pics_name_info"></p>
+                                    </div>
+                                 </div>
+                                 <p class="user_player_name">Вован Вован</p>
+                                 </div>
+                                 <div class="player_scores_wrapper">
+                                     <p class="player_win_score">198</p>
+                                     <p class="user_info_details_item_win_loss_info_line">/</p>
+                                     <p class="player_loss_score">65</p>
+                                 </div>
+                             </div>
+                             <div class="statistics_item_user_info_details_item">
+                                 <div class="statistics_item_user_name_pics_main_wrapper">
+                                     <div class="user_info_img_name_wrapper">
+                                    <div class="user_info_img">
+                                        <img src="../images/user_statistics3.png" alt="">
+                                    </div>
+                                    <div class="user_info_pics_name">
+                                            <p class="user_info_pics_name_info"></p>
+                                    </div>
+                                 </div>
+                                 <p class="user_player_name">Fimochka</p>
+                                 </div>
+                                 <div class="player_scores_wrapper">
+                                     <p class="player_win_score">147</p>
+                                     <p class="user_info_details_item_win_loss_info_line">/</p>
+                                     <p class="player_loss_score">32</p>
+                                 </div>
+                             </div>
+                             <div class="statistics_item_user_info_details_item">
+                                 <div class="statistics_item_user_name_pics_main_wrapper">
+                                     <div class="user_info_img_name_wrapper">
+                                    <div class="user_info_img">
+                                        <img src="../images/user_statistics4.png" alt="">
+                                    </div>
+                                    <div class="user_info_pics_name">
+                                            <p class="user_info_pics_name_info"></p>
+                                    </div>
+                                 </div>
+                                 <p class="user_player_name">Exxxtraas Dragon</p>
+                                 </div>
+                                 <div class="player_scores_wrapper">
+                                     <p class="player_win_score">173</p>
+                                     <p class="user_info_details_item_win_loss_info_line">/</p>
+                                     <p class="player_loss_score">87</p>
+                                 </div>
+                             </div>
+                               </div>
+                               <div class="statistics_item_user_chart_details_wrapper">
+                                   <div class="statistics_item_user_chart_details">
+                                    <div class="statistics_item_user_name_pics_main_wrapper">
+                                        <div class="user_info_img_name_wrapper">
+                                       <div class="user_info_img">
+                                           <img src="../images/user_statistics1.png" alt="">
+                                       </div>
+                                       <div class="user_info_pics_name">
+                                               <p class="user_info_pics_name_info"></p>
+                                       </div>
+                                    </div>
+                                    <p class="user_player_name">Сергей Ермолов</p>
+                                    </div>
+                                    <div class="player_scores_wrapper">
+                                        <p class="player_win_score">214</p>
+                                        <p class="user_info_details_item_win_loss_info_line">/</p>
+                                        <p class="player_loss_score">52</p>
+                                    </div>
+                                   </div>
+                                  <canvas id="myChart2"></canvas>
+                                  <div class="statistics_item_games_name_scores_items_wrapper">
+                                    <div class="statistics_item_games_name_scores_item">
+                                        <p class="statistics_item_games_name">DOTA 2</p>
+                                        <div class="statistics_item_games_scores_item">
+                                            <p class="statistics_item_games_win_scores">35</p>
+                                           <p class="user_info_details_item_win_loss_info_line">/</p>
+                                            <p class="statistics_item_games_loss_scores">26</p>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="statistics_item_games_name_scores_item">
+                                        <p class="statistics_item_games_name">FORTNITE</p>
+                                        <div class="statistics_item_games_scores_item">
+                                            <p class="statistics_item_games_win_scores">17</p>
+                                          <p class="user_info_details_item_win_loss_info_line">/</p>
+                                           <p class="statistics_item_games_loss_scores">19</p>  
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="statistics_item_games_name_scores_item">
+                                        <p class="statistics_item_games_name">VALORANT</p>
+                                        <div class="statistics_item_games_scores_item">
+                                          <p class="statistics_item_games_win_scores">27</p>
+                                          <p class="user_info_details_item_win_loss_info_line">/</p>
+                                           <p class="statistics_item_games_loss_scores">18</p>
+                                        </div>
+                                
+                                    </div>
+                                  </div>
+                               </div>
+                            </div>
+                         
+                         </div>
+                     </div>
+                  </div>
+              </section>
+         </main>
+       
+   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+   <script>
+       $(document).on("click", ".statistics_item_select_title_dropdown_wrapper",function(){
+           $(".statistics_item_select_hidden_wrapper").toggleClass("open");
+       });
+ 
+
+
+
+const labels = [
+'01.07', 
+'02.07', 
+'03.07',
+'04.07', 
+'05.07', 
+'06.07', 
+'07.07', 
+'08.07', 
+'09.07', 
+'10.07', 
+'11.07', 
+'12.07', 
+'13.07', 
+'14.07'
+];
+
+const data = {
+  labels:labels,
+  datasets: [
+    {
+      label: 'WIN',
+      data: [10, 20, 30, 40],
+      borderColor:   "#69B671",
+      backgroundColor:  "#69B671",
+    },
+    {
+      label: 'LOSS',
+      data: [10,30],
+      borderColor: "#FF367E",
+      backgroundColor: "#FF367E",
+    }
+  ]
+  };
+  const config = {
+  type: 'line',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+      }
+    
+
+}
+  },
+  interaction: {
+      mode: 'index',
+      intersect: false
+    },
+  scales: {
+            y: {
+                stacked: true,
+                beginAtZero: true,
+                display: true,
+            },
+            x:{
+                stacked: true,
+                display: true,
+            },
+        }
+
+};
+var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+
+
+  var myChart2 = new Chart(
+    document.getElementById('myChart2'),
+    config
+  );
+
+  $(document).on("click", ".statistics_item_title", function(){
+
+var data_id = $(this).data("id");
+$(".statistics_item_title").removeClass("active");
+$(this).addClass("active");
+
+
+
+ $(".statistics_item").removeClass("open");
+$("#" + data_id).addClass("open");
+})  
+
+
+$(document).on("click", ".statistics_item_select_hidden_info", function(){
+    $val = $(this).data("name");
+    $(".statistics_item_select_title").html($val);
+    $(".statistics_item_select_hidden_wrapper").removeClass("open");
+})
+   </script>
+</body>
+</html>
+
+
+
+

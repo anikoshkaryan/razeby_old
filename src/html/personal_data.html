@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/main_logo.svg">
+        <title>Личные данные</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    .personal_data {
+        width: 100%;
+        margin-bottom: 13px;
+        margin-top: 12px;
+    }
+    .personal_data_wrapper {
+       width: 100%;
+       max-width: 1376px;
+       margin: 0 auto;
+       background: #3C3C49;
+       border-radius: 30px;
+       padding: 40px 26px;
+   }
+   .personal_data_link {
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 33px;
+    display: flex;
+    align-items: center;
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 32px;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+.personal_data_link svg {
+    margin-right: 31px;
+}
+
+.personal_data_form_wrapper {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+.personal_data_input_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.personal_data_label_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #E7E7E7;
+
+}
+.personal_data_label_wrapper {
+    width: 22%;
+    margin-right: 15px;
+}
+.personal_data_input_icon_wrapper {
+    max-width: 509px;
+    width: 100%;
+    background: #22292C;
+    border-radius: 6px;
+    padding: 14px 18px 15px 13px;
+    margin-right: 23px;
+    display: flex;
+    justify-content: space-between;
+}
+.personal_data_input_field{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #E7E7E7;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer
+    
+}
+   
+.personal_data_input_field::placeholder{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #E7E7E7;
+}
+
+.personal_data_input_icon_btn1 {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.personal_data_input_icon_btn2 {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-left: 20px;
+}
+.confirm_btn {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #3EFF74;
+    background: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+.confirmed_btn{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #6A6E78;
+    display: none;
+}
+.personal_data_files_input_wrapper {
+    display: flex;
+  
+}
+.personal_data_files_input_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #E7E7E7;
+    width: 22%;
+    margin-right: 15px;
+}
+.personal_data_files_input_second_main_wrapper {
+    background: #22292C;
+    border-radius: 6px;
+    padding: 16px 18px 40px 18px;
+    max-width: 509px;
+    width: 100%;
+    margin-right: 23px;
+}
+#file_input_confirm_btn {
+    position: relative;
+    top: 35%;
+}
+.file_data_label {
+    width: 65px;
+    height: 50px;
+    /* left: 457px; */
+    /* top: 344px; */
+    background: #3C3C49;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+.personal_data_files_input_child_wrapper:not(:last-child) {
+    margin-bottom: 26px;
+}
+.personal_data_files_input_child_wrapper{
+    display: flex;
+    align-items: center;
+}
+.personal_data_files_input_titles_wrapper {
+    flex: 1;
+    position: relative;
+    top: 13px;
+}
+.personal_data_files_input_title2 {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #3EFF74;
+    flex: 1;
+}
+.personal_data_files_input_title_info {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    color: #E7E7E7;
+    margin-top: 7px;
+}
+.file_span1 {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.hidden_body{
+    overflow: hidden;
+}
+
+/*medi*/
+
+@media (max-width:700px){
+    .personal_data_input_wrapper{
+        flex-direction: column;
+        align-items: unset!important;
+    }
+    .personal_data_label_wrapper {
+    width: unset!important;
+    margin-right: unset!important;
+    margin-bottom: 10px;
+}
+.personal_data_input_icon_wrapper {
+    max-width: unset!important;
+    margin-right: unset!important;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.personal_data_files_input_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.personal_data_files_input_title{
+    width: unset!important;
+    margin-right: unset!important;
+    margin-bottom: 10px;
+}
+.personal_data_files_input_second_main_wrapper {
+    max-width: unset!important;
+    width: 100%;
+    margin-right: unset!important;
+    margin-bottom: 10px;
+}
+}
+
+@media (min-width:601px) and (max-width: 800px){
+    .personal_data_wrapper{
+        border-radius: 20px!important;
+    }
+}
+
+
+@media (min-width:426px) and (max-width: 600px){
+    .personal_data_wrapper{
+        border-radius: 10px!important;
+    }
+}
+@media (max-width: 425px){
+    .personal_data_wrapper{
+        border-radius: unset!important;
+        padding: 40px 12px!important;
+    }
+    .personal_data_files_input_child_wrapper {
+    display: flex;
+    align-items: unset!important;
+    flex-direction: column;
+}
+.file_data_label {
+    margin-bottom: 10px;
+    margin-right: unset!important;
+}
+.personal_data_input_wrapper {
+    margin-bottom: 25px!important;
+}
+.personal_data_link {
+    font-size: 22px!important;
+}
+.personal_data_link svg{
+    margin-right: 12px!important;
+}
+}
+
+.telephone_confirmation_modal{
+    position: fixed;
+z-index: 9;
+left: 0;
+top: 0;
+display: none;
+width: 100%;
+height: 100%;
+padding-top: 100px;
+overflow: auto;
+background-color: #000;
+background-color: rgba(0, 0, 0, 0.7);
+-webkit-animation-name: a;
+-webkit-animation-duration: 0.4s;
+animation-name: a;
+animation-duration: 0.4s;
+}
+.telephone_confirmation_modal.open{
+    display: block!important;
+}
+
+.telephone_confirmation_modal_wrapper {
+    max-width: 608px;
+    width: 100%;
+    margin: 0 auto;
+    background: #3C3C49;
+    border-radius: 20px;
+    padding-top: 28px;
+    padding-bottom: 31px;
+    position: relative;
+
+}
+.telephone_confirmation_modal_close {
+    position: absolute;
+    right: 30px;
+    top: 24px;
+    cursor: pointer;
+}
+.telephone_confirmation_modal_title {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 29px;
+}
+.telephone_confirmation_modal_info {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: center;
+    color: #ACACAC;
+    margin-bottom: 29px;
+}
+.telephone_confirmation_modal_title_input_btn_wrapper {
+    max-width: 370px;
+    width: 100%;
+    margin: 0 auto;
+}
+.telephone_confirmation_modal_input_title {
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.telephone_confirmation_modal_input_field {
+    width: 164px;
+    height: 42px;
+    background: #22292C;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    margin-bottom: 17px;
+    cursor: pointer;
+    outline: none;
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #E7E7E7;
+    padding: 12px 5px;
+    text-align: center;
+
+}
+.telephone_confirmation_modal_input_field::placeholder{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #E7E7E7;
+}
+.telephone_confirmation_modal_input_send_message_btn {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    color: #3EFF74;
+    text-align: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 57px;
+}
+.telephone_confirmation_modal_form_btns_wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.telephone_confirmation_modal_form_btn {
+    font-family: "Montserrat",sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #3EFF74;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+
+@media (min-width: 426px) and (max-width: 620px){
+    .telephone_confirmation_modal_wrapper {
+    max-width: unset!important;
+    width: 97%!important;
+    border-radius: 10px!important;
+    }
+}
+@media (max-width: 425px){
+    .telephone_confirmation_modal_wrapper {
+    max-width: unset!important;
+    width: 97%!important;
+    border-radius: unset!important;
+    }
+    .telephone_confirmation_modal_close {
+    position: absolute;
+    right: 16px!important;
+    top: 10px!important;
+}
+.telephone_confirmation_modal_info{
+    font-size: 14px!important;
+}
+.telephone_confirmation_modal_title {
+    font-size: 16px!important;
+    }
+}
+@media (min-width:426px) and (max-width:493px){
+    .telephone_confirmation_modal_title {
+    font-size: 18px!important;
+    }
+
+}
+
+@media (max-width: 400px){
+    .telephone_confirmation_modal_title_input_btn_wrapper {
+    max-width: unset!important;
+    width: 95%!important;
+    margin: 0 auto;
+}
+}
+ </style>
+
+
+</head>
+<body>
+    <div class="personal_data">
+          <div  class="personal_data_wrapper">
+              <a href="" class="personal_data_link">
+                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 7H3.83L9.42 1.41L8 0L0 8L8 16L9.41 14.59L3.83 9H16V7Z" fill="#3EFF74"/>
+                    </svg>
+                    Личные данные</a>
+                <form action="" class="personal_data_form_wrapper">
+                    <div class="personal_data_input_wrapper">
+                       <label for="personal_data_input1" class="personal_data_label_wrapper">
+                           <span class="personal_data_label_title">E-mail</span>
+                       </label>
+                       <div class="personal_data_input_icon_wrapper">
+                            <input type="text" readonly class="personal_data_input_field" placeholder="Введите email" id="personal_data_input1" name="email">
+                           <button type="button" class="personal_data_input_icon_btn1" id="personal_data_input_icon1">
+                           <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.71 4.0425C18.1 3.6525 18.1 3.0025 17.71 2.6325L15.37 0.2925C15 -0.0975 14.35 -0.0975 13.96 0.2925L12.12 2.1225L15.87 5.8725L17.71 4.0425ZM0 14.2525V18.0025H3.75L14.81 6.9325L11.06 3.1825L0 14.2525Z" fill="#969696"/>
+                            </svg>
+
+                           </button> 
+                           
+                                
+                       </div>
+                         <div class="personal_data_input_btns_wrapper">
+                             <button class="personal_data_input_btn confirm_btn">ПОДТВЕРДИТЬ</button>
+                             <button class="personal_data_input_btn confirmed_btn">Подтверждено</button>
+                         </div>
+                    </div>
+                    <div class="personal_data_input_wrapper">
+                        <label for="personal_data_input2" class="personal_data_label_wrapper">
+                            <span class="personal_data_label_title">Телефон</span>
+                        </label>
+                        <div class="personal_data_input_icon_wrapper">
+                            <input type="text" readonly class="personal_data_input_field" placeholder="Введите номер телефона" id="personal_data_input2" name="phone">
+                            <div class="personal_data_icons_wrapper">
+                                <button type="button" class="personal_data_input_icon_btn1" id="personal_data_input_icon2">
+                                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                         <path d="M17.71 4.0425C18.1 3.6525 18.1 3.0025 17.71 2.6325L15.37 0.2925C15 -0.0975 14.35 -0.0975 13.96 0.2925L12.12 2.1225L15.87 5.8725L17.71 4.0425ZM0 14.2525V18.0025H3.75L14.81 6.9325L11.06 3.1825L0 14.2525Z" fill="#969696"/>
+                                     </svg>
+         
+                                    </button> 
+
+                                    <button type="button" class="personal_data_input_icon_btn2">
+                                        <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14 1H10.5L9.5 0H4.5L3.5 1H0V3H14V1ZM1 16C1 16.5304 1.21071 17.0391 1.58579 17.4142C1.96086 17.7893 2.46957 18 3 18H11C11.5304 18 12.0391 17.7893 12.4142 17.4142C12.7893 17.0391 13 16.5304 13 16V4H1V16Z" fill="#969696"/>
+                                        </svg>  
+             
+                                        </button> 
+                                 
+                            </div>
+                        </div>
+                        <div class="personal_data_input_btns_wrapper">
+                            <button class="personal_data_input_btn confirm_btn" type="button" id="confirm_phone_btn">ПОДТВЕРДИТЬ</button>
+                            <button class="personal_data_input_btn confirmed_btn">Подтверждено</button>
+                        </div>
+                        
+                     </div>
+                     <div class="personal_data_files_input_wrapper">
+                         <p class="personal_data_files_input_title">Документы</p>
+                         <div class="personal_data_files_input_second_main_wrapper">
+                            <div class="personal_data_files_input_child_wrapper">
+                                <label for="fileinput_form_data1" class="file_data_label">
+                                
+                                    <span class="file_span_data">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8.5 13.5L11 16.5L14.5 12L19 18H5L8.5 13.5ZM21 19V5C21 3.89 20.1 3 19 3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19Z" fill="#969696"/>
+                                            </svg>
+                                    </span>
+                                    <input type="file" id="fileinput_form_data1" hidden>
+                                    
+                               </label>
+
+                               <span class="personal_data_files_input_title2">Загрузить паспорт</span>
+                             </div>
+                             <span class="file_span1"></span>
+                             <div class="personal_data_files_input_child_wrapper">
+                                <label for="fileinput_form_data2" class="file_data_label">
+                                
+                                    <span class="file_span_data">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8.5 13.5L11 16.5L14.5 12L19 18H5L8.5 13.5ZM21 19V5C21 3.89 20.1 3 19 3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19Z" fill="#969696"/>
+                                            </svg>
+                                    </span>
+                                    <input type="file" id="fileinput_form_data2" hidden>
+                                    
+                               </label>
+                               <span class="personal_data_files_input_title2">Загрузить автомобильные права</span>
+                             </div>
+                             <span class="file_span2"></span>
+                             <div class="personal_data_files_input_child_wrapper">
+                                <label for="fileinput_form_data3" class="file_data_label">
+                                
+                                    <span class="file_span_data">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8.5 13.5L11 16.5L14.5 12L19 18H5L8.5 13.5ZM21 19V5C21 3.89 20.1 3 19 3H5C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19Z" fill="#969696"/>
+                                            </svg>
+                                    </span>
+                                    <input type="file" id="fileinput_form_data3" hidden>
+                                   
+                               </label>
+                               <div class="personal_data_files_input_titles_wrapper">
+                                  <span class="personal_data_files_input_title2">Загрузить селфи</span>
+                                   <p class="personal_data_files_input_title_info">Напишите слово "razeby"  и дату на белом листке, сделайте селфи, чтобы вас и лист было видно</p>
+                               </div>
+                           
+                             </div>
+                             <span class="file_span3"></span>
+                         </div>
+                       
+                         <div class="personal_data_input_btns_wrapper">
+                            <button class="personal_data_input_btn confirm_btn" id="file_input_confirm_btn">ПОДТВЕРДИТЬ</button>
+                            <button class="personal_data_input_btn confirmed_btn">Подтверждено</button>
+                        </div>
+                     </div>
+                </form>
+                   
+            
+          </div>
+    </div>
+    <div class="telephone_confirmation_modal">
+       <form action="" class="telephone_confirmation_modal_wrapper">
+            <div class="telephone_confirmation_modal_close">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z" fill="#969696"/>
+                </svg>
+            </div>
+            <div class="telephone_confirmation_modal_title_input_btn_wrapper">
+            <h1 class="telephone_confirmation_modal_title">ПОДТВЕРЖДЕНИЕ ТЕЛЕФОНА</h1>
+            <p class="telephone_confirmation_modal_info">На номер +7 913 776 8650 было отпрвлено SMS с кодом продтверждения</p>
+            <div class="telephone_confirmation_modal_input_wrapper">
+                <p class="telephone_confirmation_modal_input_title">Код из SMS</p>
+                <input type="text" class="telephone_confirmation_modal_input_field" placeholder="Введите Код">
+                <button class="telephone_confirmation_modal_input_send_message_btn">Отправить SMS повторно</button>
+            </div>
+            <div class="telephone_confirmation_modal_form_btns_wrapper">
+                <button class="telephone_confirmation_modal_form_btn cancele_btn">ОТМЕНА</button>
+                <button class="telephone_confirmation_modal_form_btn ready_btn">ГОТОВО</button>
+            </div>
+        </div>
+       </form>
+    </div>
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+$(document).on("click", "#personal_data_input_icon1",function(){
+  $(this).parent().find("#personal_data_input1").removeAttr("readonly");
+  $("#personal_data_input1").focus();
+ 
+})
+
+$(document).on("click", "#personal_data_input_icon2",function(){
+  $(this).parent().parent().find("#personal_data_input2").removeAttr("readonly");
+  $("#personal_data_input2").focus();
+ 
+})
+
+    
+$(document).on("click", ".personal_data_input_icon_btn2",function(){
+  $(this).parent().parent().find("#personal_data_input2").val("");
+  
+ 
+})
+
+
+//input_type_file
+
+$(document).on('change','#fileinput_form_data1',function () {
+
+var value = $(this).val();
+
+  var arr = value.split('\\');
+
+  $(this).closest(".personal_data_files_input_second_main_wrapper").find(".file_span1").html(arr[arr.length - 1]);
+
+  var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+
+  var span = $(this).closest(".personal_data_files_input_second_main_wrapper").find(".file_span1");
+
+
+
+  if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+
+      span.html("Невозможно загрузить формат");
+
+      span.css({
+          'color': '#F60000'
+          
+      });
+
+      $('.hide-title').css({
+          "display": "block"
+      })
+
+
+
+  } else {
+
+      span.css({
+
+          'color': "#3EFF74"
+
+      });
+
+
+//   $(this).parent().find(".user_info_update_name_wrapper").addClass("close");
+
+
+
+  }
+
+});
+
+
+$(document).on('change','#fileinput_form_data2',function () {
+
+var value = $(this).val();
+
+  var arr = value.split('\\');
+
+  $(this).closest(".personal_data_files_input_second_main_wrapper").find(".file_span2").html(arr[arr.length - 1]);
+
+  var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+
+  var span = $(this).closest(".personal_data_files_input_second_main_wrapper").find(".file_span2");
+
+
+
+  if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+
+      span.html("Невозможно загрузить формат");
+
+      span.css({
+          'color': '#F60000'
+          
+      });
+
+      $('.hide-title').css({
+          "display": "block"
+      })
+
+
+
+  } else {
+
+      span.css({
+
+          'color': "#3EFF74"
+
+      });
+
+
+//   $(this).parent().find(".user_info_update_name_wrapper").addClass("close");
+
+
+
+  }
+
+});
+
+$(document).on('change','#fileinput_form_data3',function () {
+
+var value = $(this).val();
+
+  var arr = value.split('\\');
+
+  $(this).closest(".personal_data_files_input_second_main_wrapper").find(".file_span3").html(arr[arr.length - 1]);
+
+  var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+
+  var span = $(this).closest(".personal_data_files_input_second_main_wrapper").find(".file_span3");
+
+
+
+  if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+
+      span.html("Невозможно загрузить формат");
+
+      span.css({
+          'color': '#F60000'
+          
+      });
+
+      $('.hide-title').css({
+          "display": "block"
+      })
+
+
+
+  } else {
+
+      span.css({
+
+          'color': "#3EFF74"
+
+      });
+
+
+//   $(this).parent().find(".user_info_update_name_wrapper").addClass("close");
+
+
+
+  }
+
+});
+
+
+
+$(document).on("click", "#confirm_phone_btn",function(){
+   $(".telephone_confirmation_modal").addClass("open");
+   $("body").toggleClass("hidden_body");
+})
+
+$(document).on("click", ".telephone_confirmation_modal_close",function(){
+  $(".telephone_confirmation_modal").removeClass("open");
+  $("body").toggleClass("hidden_body");
+})
+      
+    </script>
+</body>
+</html>
+
+
+
+

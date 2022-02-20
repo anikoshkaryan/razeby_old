@@ -1,0 +1,1487 @@
+<?php
+
+/* Template Name: all-bets-page */
+
+session_start();
+   
+if (is_user_logged_in()) {
+   
+    $user_data = get_user();
+    $login_user_id = get_current_user_id();
+    $first_name = $user_data[1]['first_name'][0];
+    $first_name_first = mb_substr($user_data[1]['first_name'][0], 0, 1, 'utf-8');
+
+    if (isset($user_data[0]->user_email)) {
+
+        $user_email = $user_data[0]->user_email;
+
+    }
+   
+    if (isset($user_data[1]['phone'][0])) {
+    
+        $user_phone = $user_data[1]['phone'][0];  
+    }
+
+    if (isset($user_data[1]['user_balance'][0])) {
+    
+        $user_balance = $user_data[1]['user_balance'][0];  
+    }
+
+   
+   
+   
+      
+}else{
+   
+    header("Location:/");
+    exit();
+
+}
+
+
+
+get_header();
+
+$all_game = get_all_games();
+
+$live_bets = live_bets();
+
+
+
+
+
+if (isset($_GET['bet_id']) && !empty($_GET['bet_id'])) {
+
+      $check_live_bets = check_live_bets($_GET['bet_id']);
+
+      if (isset($check_live_bets) && !empty($check_live_bets)) {
+         
+         $play_game_id = $_GET['bet_id']; 
+         $players_game_info =  get_live_bets_data($play_game_id);
+         $game_id           =  $players_game_info[0]->game_id;
+         $all_messages  = all_messages($play_game_id);
+         $evidence_exist = evidence_exist($play_game_id);
+         $owner_user_data = user_new_bets($players_game_info[0]->owner_user_id); 
+         $accept_user_data = user_new_bets($players_game_info[0]->accept_user_id); 
+         delete_game_page($play_game_id);
+         finished_time_game_page($play_game_id);
+
+         if ($players_game_info[0]->owner_user_id == $login_user_id || $players_game_info[0]->accept_user_id == $login_user_id) {
+         
+         
+             // echo "<pre>";
+             // print_r($players_game_info[0]);die;
+?> 
+
+
+   
+           <div class="razeby_wrapper" id="all_bets_main_wrapper" style="background-image: url(<?php the_field('game_cover_photo',$game_id); ?>);">
+                  <?php require_once(WP_CONTENT_DIR. '/themes/razeby/modals/header_modal.php'); ?>
+                 <main>
+                 <section class="all_bets">
+                       <div class="all_bets_wrapper">
+                         <div class="all_bets__items_wrapper">
+                             <!-- <h1 class="all_bets_title">Все ставки COUNTER STRIKE</h1> -->
+                             <div class="all_bets_user_info_wrapper">
+                                
+                                   <?php if ($players_game_info[0]->owner_user_accepted != '0' && $players_game_info[0]->owner_user_accepted != '3'): ?>
+                                             
+                                             <p class="all_bets_user_expression expression1">Я ГОТОВ!</p>
+                                            
+                                   <?php endif; ?>
+
+                                   <p class="all_bets_user_expression owner_agree_show">Я ГОТОВ!</p>
+
+                                    <?php if ($players_game_info[0]->owner_user_accepted == '3' && $players_game_info[0]->accepter_user_accepted == '3'): ?>
+
+                                           
+                                                <?php if ($players_game_info[0]->owner_user_id == $login_user_id): ?>
+                                                          
+                                                            <?php if (empty($players_game_info[0]->winner_user)): ?>
+
+                                                                     <button class="all_bets_user_expression opponent_win_btn" id="owner_won_btn" data-bet_id="<?php echo $play_game_id ?>" data-won_user_id="<?php echo $players_game_info[0]->owner_user_id; ?>">Я ПОБЕДИЛ!</button>
+                                                            <?php elseif (!empty($players_game_info[0]->disagree_win) && $players_game_info[0]->disagree_win == $login_user_id ): ?>
+                                                                     
+                                                                    
+                                                                    <button class="all_bets_user_expression disagree_owner_win_btn" id="disagree_won_btn" data-bet_id="<?php echo $play_game_id ?>" >Я ПОБЕДИЛ!</button>         
+
+                                                          <?php endif; ?>
+
+                                                <?php else: ?>
+                                                        
+                                                        <?php if (empty($players_game_info[0]->winner_user)): ?>
+
+                                                                  <button class="all_bets_user_expression mine_win_btn opponent_won_btn" data-bet_id="<?php echo $play_game_id ?>" data-user_id="<?php echo $players_game_info[0]->owner_user_id; ?>">ОН ПОБЕДИЛ!</button>
+                                                        
+                                                        <?php endif; ?>
+                                                        
+                                                <?php endif; ?>
+
+                                    <?php endif; ?>
+
+                                        <span class="error_text win_owner_exist_wrapper"> </span>
+
+                                   <div class="all_bets_user_info_box">
+                                       <div class="all_bets_user1 user1">
+                                        <?php if ($players_game_info[0]->owner_user_id == $login_user_id): ?>
+
+                                                   <?php if ($players_game_info[0]->owner_user_accepted != '1' &&  $players_game_info[0]->owner_user_accepted != '2' && $players_game_info[0]->owner_user_accepted != '3'): ?>
+                                                             
+                                                            <div class="expression_modаl">
+                                                                   <button type="button" data-bet_id="<?php echo $play_game_id ?>" data-user_id="<?php echo $players_game_info[0]->owner_user_id; ?>" id="owner_agree" class="expression_modаl_owner_btn">ГОТОВ</button>
+                                                            </div>
+                                                      
+                                                    <?php endif; ?>
+                                        
+
+                                        <?php endif; ?>
+
+                                           <div class="all_bets_user_img_name_star_num_wrapper">
+                                               <div class="all_bets_user_img_stars_wrapper">
+                                                     <div class="all_bets_user_img_name_wrapper first_user_img_name_wrapper">
+
+                                                     <div class="complain_blacklist_view_statistics_view_profile_links_buttons_wrapper">
+                                                        <div class="to_praise_icon_title_wrapper">
+                                                           <div class="to_praise_icon_notification_wrapper">
+                                                                <div class="to_praise_icon"><svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="#3EFF74"/></svg></div>
+                                                                <span class="to_praise_notification">+1</span>    
+                                                            </div>                  
+                                                           <p class="to_praise_title">Похвалить</p>
+                                                        </div>
+                                                        <div class="to_complain_icon_title_wrapper">
+                                                           <div class="to_complain_icon_notification_wrapper">
+                                                               <div class="to_complain_icon"><svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="#FF367E"/></svg></div>
+                                                               <span  class="to_complain_notification">-1</span>
+                                                           </div>
+                                                           <p class="to_complain_title">Пожаловаться</p>
+                                                        </div>
+                                                        <div class="add_to_blacklist_icon_title_wrapper">
+                                                               <div class="add_to_blacklist_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM4 12C4 7.6 7.6 4 12 4C13.8 4 15.5 4.6 16.9 5.7L5.7 16.9C4.6 15.5 4 13.8 4 12ZM12 20C10.2 20 8.5 19.4 7.1 18.3L18.3 7.1C19.4 8.5 20 10.2 20 12C20 16.4 16.4 20 12 20Z" fill="#3EFF74"/></svg></div>
+                                                            <p class="add_to_blacklist_title">Добавить в чёрный список</p>
+                                                        </div>
+                                                        <div class="view_statistics_icon_title_wrapper">
+                                                            <div class="view_statistics_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 17H15V13H17V17ZM13 17H11V7H13V17ZM9 17H7V10H9V17ZM19 3H5C3.89 3 3 3.89 3 5V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V5C21 3.89 20.1 3 19 3Z" fill="#3EFF74"/></svg></div>
+                                                            <p class="view_statistics_title">Посмотреть статистику</p>
+                                                        </div>
+                                                        <div class="view_profile_icon_title_wrapper">
+                                                             <div class="view_profile_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C13.0609 4 14.0783 4.42143 14.8284 5.17157C15.5786 5.92172 16 6.93913 16 8C16 9.06087 15.5786 10.0783 14.8284 10.8284C14.0783 11.5786 13.0609 12 12 12C10.9391 12 9.92172 11.5786 9.17157 10.8284C8.42143 10.0783 8 9.06087 8 8C8 6.93913 8.42143 5.92172 9.17157 5.17157C9.92172 4.42143 10.9391 4 12 4ZM12 14C16.42 14 20 15.79 20 18V20H4V18C4 15.79 7.58 14 12 14Z" fill="#3EFF74"/></svg></div>
+                                                             <p class="view_profile_title">Посмотреть профиль</p>
+                                                        </div>
+                                                     </div>
+
+                                                        <?php if (isset($owner_user_data['image'][0]) && !empty($owner_user_data['image'][0])): ?>
+
+                                                                                <div class="all_bets_user_img">
+
+                                                                                     <img src="<?php echo content_url(). '/uploads/images/' .$owner_user_data['image'][0]; ?>" alt="">
+
+                                                                                </div>
+
+                                                                    <?php else: ?>
+                                                                                
+                                                                                <div  class="all_bets_user_img">
+
+                                                                                     <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                                                </div>     
+                                                      
+                                                        <?php endif; ?>                                                           
+
+                                                    <div class="all_bets_user_name">
+                                                             <p class="all_bets_user_name_text"></p>
+                                                    </div>
+                                                     </div>
+                                                     <div class="stars_num_wrapper">
+                                                         <div class="star">
+                                                            <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M7.5 0L9.18386 5.18237H14.6329L10.2245 8.38525L11.9084 13.5676L7.5 10.3647L3.09161 13.5676L4.77547 8.38525L0.367076 5.18237H5.81614L7.5 0Z" fill="#888888"/>
+                                                            </svg> 
+                                                         </div>
+                                                         <p class="star_num">1 328</p>
+                                                     </div>
+                                               </div>
+                                               
+                                                 <p class="all_bets_user_main_name"><?php echo $owner_user_data['first_name'][0]; ?></p>
+                                           </div>
+                                           
+                                       </div>
+                                       <div class="all_bets_timer_wrapper">
+                                              <p class="all_bets_timer_money">&#8381 <?php echo $players_game_info[0]->user_bet; ?></p>
+
+                                               <div class="all_bets_show_timer">
+                                                    <div class="progress-bar" >
+
+                                                     <p> 0:00 </p>    
+                                                     
+                                                    </div>
+
+                                               </div>
+
+                                              <div class="all_bets_timer">
+
+                                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="bet_timmer_svg" version="1.1" viewBox="0 0 300 300" preserveAspectRatio="none">
+                                                        <circle cx="100" cy="100" r="57" id="pink-halo" fill="none" stroke="#000000" stroke-width="10" stroke-dasharray="0, 361" transform="rotate(-90,100,100)" />
+                                                        <text id="myTimer" text-anchor="middle" x="100" y="110" style="font-size: 35px; fill:#888888;"></text>
+                                                        </svg>
+
+                                              </div>
+
+                                               <?php if(empty($evidence_exist)): ?>
+
+                                                        <?php if(isset($players_game_info[0]->winner_user) && !empty($players_game_info[0]->winner_user)): ?>
+
+                                                                 <button class="all_bets_timer_add_evidence_btn show_evidence_btn">ДОБАВИТЬ ДОКАЗАТЕЛЬСТВА</button>
+
+                                                        <?php endif; ?>
+                                                
+                                                <?php endif; ?>
+
+
+                                                <button class="all_bets_timer_add_evidence_btn">ДОБАВИТЬ ДОКАЗАТЕЛЬСТВА</button>
+                                                
+                                       </div>
+                                       <div class="all_bets_user2 user2">
+
+                                        <?php if ($players_game_info[0]->accept_user_id == $login_user_id): ?>
+                                                    
+                                                    <?php if ($players_game_info[0]->accepter_user_accepted != '1' &&  $players_game_info[0]->accepter_user_accepted != '2' && $players_game_info[0]->accepter_user_accepted != '3'): ?>
+
+                                                       <div class="expression_modаl">
+
+                                                        <button type="button" id="accepter_agree" data-bet_id="<?php echo $play_game_id ?>" data-user_id="<?php echo $players_game_info[0]->accept_user_id; ?>" class="expression_modаl_accept_btn">ГОТОВ</button>
+
+                                                       </div>
+
+                                                    <?php endif; ?> 
+
+                                        <?php endif; ?>   
+                                           <div class="all_bets_user_img_name_star_num_wrapper">
+                                               <div class="all_bets_user_img_stars_wrapper">
+                                                  <div class="stars_num_wrapper">
+                                                    <div class="star">
+                                                       <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                       <path d="M7.5 0L9.18386 5.18237H14.6329L10.2245 8.38525L11.9084 13.5676L7.5 10.3647L3.09161 13.5676L4.77547 8.38525L0.367076 5.18237H5.81614L7.5 0Z" fill="#888888"/>
+                                                       </svg> 
+                                                    </div>
+                                                    <p class="star_num">1 328</p>
+                                                  </div>
+                                                  <div class="all_bets_user_img_name_wrapper second_user_img_name_wrapper">
+
+
+                                                  <div class="complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2">
+                                                        <div class="to_praise_icon_title_wrapper">
+                                                           <div class="to_praise_icon_notification_wrapper">
+                                                                <div class="to_praise_icon"><svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="#3EFF74"/></svg></div>
+                                                                <span class="to_praise_notification">+1</span>    
+                                                            </div>                  
+                                                           <p class="to_praise_title">Похвалить</p>
+                                                        </div>
+                                                        <div class="to_complain_icon_title_wrapper">
+                                                           <div class="to_complain_icon_notification_wrapper">
+                                                               <div class="to_complain_icon"><svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="#FF367E"/></svg></div>
+                                                               <span  class="to_complain_notification">-1</span>
+                                                           </div>
+                                                           <p class="to_complain_title">Пожаловаться</p>
+                                                        </div>
+                                                        <div class="add_to_blacklist_icon_title_wrapper">
+                                                               <div class="add_to_blacklist_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM4 12C4 7.6 7.6 4 12 4C13.8 4 15.5 4.6 16.9 5.7L5.7 16.9C4.6 15.5 4 13.8 4 12ZM12 20C10.2 20 8.5 19.4 7.1 18.3L18.3 7.1C19.4 8.5 20 10.2 20 12C20 16.4 16.4 20 12 20Z" fill="#3EFF74"/></svg></div>
+                                                            <p class="add_to_blacklist_title">Добавить в чёрный список</p>
+                                                        </div>
+                                                        <div class="view_statistics_icon_title_wrapper">
+                                                            <div class="view_statistics_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 17H15V13H17V17ZM13 17H11V7H13V17ZM9 17H7V10H9V17ZM19 3H5C3.89 3 3 3.89 3 5V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V5C21 3.89 20.1 3 19 3Z" fill="#3EFF74"/></svg></div>
+                                                            <p class="view_statistics_title">Посмотреть статистику</p>
+                                                        </div>
+                                                        <div class="view_profile_icon_title_wrapper">
+                                                             <div class="view_profile_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C13.0609 4 14.0783 4.42143 14.8284 5.17157C15.5786 5.92172 16 6.93913 16 8C16 9.06087 15.5786 10.0783 14.8284 10.8284C14.0783 11.5786 13.0609 12 12 12C10.9391 12 9.92172 11.5786 9.17157 10.8284C8.42143 10.0783 8 9.06087 8 8C8 6.93913 8.42143 5.92172 9.17157 5.17157C9.92172 4.42143 10.9391 4 12 4ZM12 14C16.42 14 20 15.79 20 18V20H4V18C4 15.79 7.58 14 12 14Z" fill="#3EFF74"/></svg></div>
+                                                             <p class="view_profile_title">Посмотреть профиль</p>
+                                                        </div>
+                                                     </div>
+                                                    
+
+
+                                                    <?php if (isset($accept_user_data['image'][0]) && !empty($accept_user_data['image'][0])): ?>
+
+                                                                                <div class="all_bets_user_img">
+
+                                                                                     <img src="<?php echo content_url(). '/uploads/images/' .$accept_user_data['image'][0]; ?>" alt="">
+
+                                                                                </div>
+
+                                                                    <?php else: ?>
+                                                                                
+                                                                                <div  class="all_bets_user_img">
+
+                                                                                     <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                                                </div>     
+                                                      
+                                                    <?php endif; ?>
+                                                 <!-- <div class="all_bets_user_name">
+                                                          <p class="all_bets_user_name_text">VP</p>
+                                                 </div> -->
+                                                  </div>
+                                                 
+                                               </div>
+                                            
+                                              <p class="all_bets_user_main_name"><?php echo $accept_user_data['first_name'][0]; ?></p>
+                                        </div>
+                                       </div>
+                                   </div>
+                                   
+                                   <?php if ($players_game_info[0]->accepter_user_accepted != '0' && $players_game_info[0]->accepter_user_accepted != '3'): ?>
+
+                                           
+                                             
+                                                       <p class="all_bets_user_expression expression2">Я ГОТОВ!</p>
+
+                              
+                                            
+                                   <?php endif; ?>  
+
+                                   <p class="all_bets_user_expression  accepter_agree_show">Я ГОТОВ!</p>
+
+                                        <?php if ($players_game_info[0]->owner_user_accepted == '3' && $players_game_info[0]->accepter_user_accepted == '3'): ?>
+
+                                                    <?php if ($players_game_info[0]->accept_user_id == $login_user_id): ?>
+                                                                
+                                                                <?php if (empty($players_game_info[0]->winner_user)): ?>
+
+                                                                   <button class="all_bets_user_expression accepter_opponent_win_btn" id="accepter_won_btn" data-bet_id="<?php echo $play_game_id ?>" data-won_user_id="<?php echo $players_game_info[0]->accept_user_id; ?> " >Я ПОБЕДИЛ!</button>
+
+                                                                <?php elseif (!empty($players_game_info[0]->disagree_win) && $players_game_info[0]->disagree_win == $login_user_id ): ?>
+                                                                     
+                                                                    
+                                                                    <button class="all_bets_user_expression disagree_opponent_win_btn" id="disagree_won_btn" data-bet_id="<?php echo $play_game_id ?>" >Я ПОБЕДИЛ!</button>
+
+                                                                <?php endif; ?>
+                                                                <span class="error_text win_accept_exist_wrapper"> </span>
+
+                                                    <?php else: ?>
+
+                                                        <?php if (empty($players_game_info[0]->winner_user)): ?>
+                                                
+                                                                  <button class="all_bets_user_expression accepter_mine_win_btn opponent_won_btn" data-bet_id="<?php echo $play_game_id ?>" data-user_id="<?php echo $players_game_info[0]->accept_user_id; ?>">ОН ПОБЕДИЛ!</button>
+                                                        
+                                                        <?php endif; ?>
+
+                                                    <?php endif; ?>
+
+                                        <?php endif; ?>
+
+                                       
+                                        
+                                        
+                             </div>
+                             <div class="all_bets_chat_user_wrapper">
+
+                                <div class="all_message_wrapper">
+                                   <div class="all_bets_chat_wrapper">                                  
+                                          <div class="all_bets_chat_items_wrapper">
+                                            <?php if(isset($all_messages) && !empty($all_messages)): ?>
+
+                                                    <?php foreach($all_messages as $key): ?>
+                                                                  
+                                                                <?php $owner_user_data_message = user_new_bets($key->sender_id);?>
+                                                                <?php $message_create_time = strtotime($key->created_at); ?>
+
+
+                                                                <?php if($key->sender_id == $user_data[0]->ID): ?>
+                                                          
+                                                                 <div class="players_chat_send_messages_wrapper">
+                                                                    <div class="players_chat_receive_messages_img_text_wrapper" >
+                                                                        <div  class="players_chat_receive_messages_user_img_name_wrapper">
+                                                                            <p class="players_chat_receive_messages_user_name"><?php echo $owner_user_data_message['first_name'][0]; ?></p>
+                                                                            <div  class="players_chat_receive_messages_img_wrapper">
+                                                                                  
+                                                                                  <?php if (isset($owner_user_data_message['image'][0]) && !empty($owner_user_data_message['image'][0])): ?>
+
+                                                                                                                    <div  class="players_chat_receive_messages_img">
+
+                                                                                                                         <img src="<?php echo content_url(). '/uploads/images/' .$owner_user_data_message['image'][0]; ?>" alt="">
+
+                                                                                                                    </div>
+
+                                                                                    <?php else: ?>
+                                                                                                                    
+                                                                                                                    <div  class="players_chat_receive_messages_img">
+
+                                                                                                                         <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                                                                                    </div>     
+                                                                                          
+                                                                                    <?php endif; ?>
+                                                                              
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                       <p class="players_chat_receive_messages_text"><?php echo $key->messages; ?></p>
+                                                                        <div  class="players_chat_receive_messages_hour_wrapper">
+                                                                            <p class="players_chat_receive_messages_hour"><?php echo human_time_diff($message_create_time);  ?> назад</p>
+                                                                        </div>
+                                                                    </div>
+                                                                 </div>
+
+
+                                                            <?php else: ?>
+
+                                                                     <div class="players_chat_receive_messages_wrapper">
+                                                                        <div class="players_chat_receive_messages_img_text_wrapper"  >
+                                                                            <div  class="players_chat_receive_messages_user_img_name_wrapper">
+                                                                               <div  class="players_chat_receive_messages_img_wrapper">
+                                                                                   <?php if (isset($owner_user_data_message['image'][0]) && !empty($owner_user_data_message['image'][0])): ?>
+
+                                                                                                                    <div  class="players_chat_receive_messages_img">
+
+                                                                                                                         <img src="<?php echo content_url(). '/uploads/images/' .$owner_user_data_message['image'][0]; ?>" alt="">
+
+                                                                                                                    </div>
+
+                                                                                    <?php else: ?>
+                                                                                                                    
+                                                                                                                    <div  class="players_chat_receive_messages_img">
+
+                                                                                                                         <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                                                                                    </div>     
+                                                                                          
+                                                                                    <?php endif; ?>
+                                                                                
+                                                                                <!--  <div class="players_chat_receive_messages_img_name">
+                                                                                       <p class="players_chat_receive_messages_user_name_second"></p>         
+                                                                                 </div> -->
+                                                                               </div>
+                                                                               <p class="players_chat_receive_messages_user_name"><?php echo $owner_user_data_message['first_name'][0]; ?></p>
+                                                                           </div>
+                                                                           <p class="players_chat_receive_messages_text"><?php echo $key->messages; ?></p>
+                                                                            <div  class="players_chat_receive_messages_hour_wrapper">
+                                                                                <p class="players_chat_receive_messages_hour"><?php echo human_time_diff($message_create_time);  ?> назад</p>
+                                                                            </div>
+                                                                        </div>
+                                                                     </div>
+                                                            
+                                                            <?php endif; ?>
+
+                                                    <?php endforeach; ?>
+                                
+
+                                            <?php endif; ?>        
+                                            <input type="hidden"  value="<?php if(isset($key->id) && !empty($key->id)): echo $key->id; endif; ?>" class="live_chat_hidden_data">
+                                          </div>
+                                    </div>
+                                 <form  action="" class="all_bets_chat_form">
+                                 
+                                            <input type="text" name="message" class="all_bets_chat" placeholder="Написать сообщение">
+
+                                            <button type="submit" data-bet_id="<?php echo $play_game_id; ?>" class="all_bets_form_btn">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0)">
+                                                    <path d="M22.5707 9.85945L3.20688 1.8246C2.39111 1.48607 1.4695 1.63499 0.80177 2.21306C0.134035 2.79121 -0.145246 3.68202 0.0730042 4.53782L1.79655 11.2968H10.2353C10.6236 11.2968 10.9384 11.6116 10.9384 12C10.9384 12.3883 10.6236 12.7032 10.2353 12.7032H1.79655L0.0730042 19.4621C-0.145246 20.318 0.133988 21.2088 0.80177 21.7869C1.47086 22.3661 2.39257 22.5132 3.20693 22.1753L22.5707 14.1405C23.4523 13.7747 24 12.9545 24 12C24 11.0455 23.4523 10.2252 22.5707 9.85945Z" fill="black"/>
+                                                    </g>
+                                                    <defs>
+                                                    <clipPath id="clip0">
+                                                    <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                    </defs>
+                                                </svg>
+                                               
+                                            </button>
+                                     
+                                 </form>
+                               </div>
+                               <div class="all_bets_users_chat_wrapper">
+                                     <div class="all_bets_user_img_name_wrapper chat_user">
+
+                                            <?php if (isset($owner_user_data['image'][0]) && !empty($owner_user_data['image'][0])): ?>
+
+                                                        <div  class="all_bets_user_img">
+
+                                                             <img src="<?php echo content_url(). '/uploads/images/' .$owner_user_data['image'][0]; ?>" alt="">
+
+                                                        </div>
+
+                                            <?php else: ?>
+                                                        
+                                                        <div  class="all_bets_user_img">
+
+                                                             <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                        </div>     
+                                                                                  
+                                            <?php endif; ?>
+                                
+                                    <div class="all_bets_user_name">
+                                             <p class="all_bets_user_name_text"></p>
+                                    </div>
+                                    </div>
+                                    <div class="all_bets_user_img_name_wrapper chat_user">
+                                            <?php if (isset($accept_user_data['image'][0]) && !empty($accept_user_data['image'][0])): ?>
+
+                                                        <div  class="all_bets_user_img">
+
+                                                             <img src="<?php echo content_url(). '/uploads/images/' .$accept_user_data['image'][0]; ?>" alt="">
+
+                                                        </div>
+
+                                            <?php else: ?>
+                                                        
+                                                        <div  class="all_bets_user_img">
+
+                                                             <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                        </div>     
+                                                                                  
+                                            <?php endif; ?>
+                                        <div class="all_bets_user_name">
+                                                 <p class="all_bets_user_name_text"></p>
+                                        </div>
+                                    </div>
+                               </div>
+                              
+                             </div>
+                         </div>
+                         <div class="mobile_all_bets__items_wrapper">
+                           <!--  <h1 class="all_bets_title">Все ставки COUNTER STRIKE</h1> -->
+                                <div class="all_bets_titles_items_wrapper">
+                                 <p class="all_bets_titles_item active" data-id="all_bet_open1">СТАТУС</p>
+                                 <p class="all_bets_titles_item" data-id="all_bet_open2">СОБЩЕНИЯ</p>
+                                </div>
+                                <div class="all_bets_user_info_wrapper all_bets_user_item open" id="all_bet_open1">
+
+                                <!-- <p class="all_bets_user_expression expression1">ОН ПОБЕДИЛ!</p> -->
+
+                                    <?php if ($players_game_info[0]->owner_user_accepted != '0' && $players_game_info[0]->owner_user_accepted != '3'): ?>
+                                             
+                                             <p class="all_bets_user_expression expression_mobile2">Я ГОТОВ!</p>
+                                            
+                                   <?php endif; ?>
+                                   <p class="all_bets_user_expression owner_agree_show">Я ГОТОВ!</p>
+                                   <?php if ($players_game_info[0]->owner_user_accepted == '3' && $players_game_info[0]->accepter_user_accepted == '3'): ?>
+
+                                           
+                                                <?php if ($players_game_info[0]->owner_user_id == $login_user_id): ?>
+                                                          
+                                                            <?php if (empty($players_game_info[0]->winner_user)): ?>
+
+                                                                     <button class="all_bets_user_expression opponent_win_btn" id="owner_won_btn" data-bet_id="<?php echo $play_game_id ?>" data-won_user_id="<?php echo $players_game_info[0]->owner_user_id; ?>">Я ПОБЕДИЛ!</button>
+
+                                                            <?php elseif (!empty($players_game_info[0]->disagree_win) && $players_game_info[0]->disagree_win == $login_user_id ): ?>
+                                                                     
+                                                                    
+                                                                    <button class="all_bets_user_expression disagree_owner_win_btn" id="disagree_won_btn" data-bet_id="<?php echo $play_game_id ?>" >Я ПОБЕДИЛ!</button>         
+
+                                                          <?php endif; ?>
+
+                                                <?php else: ?>
+
+                                                        <?php if (empty($players_game_info[0]->winner_user)): ?>
+                                                
+                                                                  <button class="all_bets_user_expression mine_win_btn opponent_won_btn" data-bet_id="<?php echo $play_game_id ?>" data-user_id="<?php echo $players_game_info[0]->owner_user_id; ?>" >ОН ПОБЕДИЛ!</button>
+                                                        
+                                                        <?php endif; ?>
+
+                                                <?php endif; ?>
+
+                                    <?php endif; ?>
+
+                                 <div class="all_bets_user_info_chat_wrapper">
+                                   <div class="all_bets_user_info_box">
+                                    <div class="all_bets_user1 user1">
+                                        <?php if ($players_game_info[0]->owner_user_id == $login_user_id): ?>
+
+                                                   <?php if ($players_game_info[0]->owner_user_accepted != '1' &&  $players_game_info[0]->owner_user_accepted != '2' && $players_game_info[0]->owner_user_accepted != '3'): ?>
+                                                             
+                                                            <div class="expression_modаl">
+                                                                   <button type="button" data-bet_id="<?php echo $play_game_id ?>" data-user_id="<?php echo $players_game_info[0]->owner_user_id; ?>" id="owner_agree" class="expression_modаl_owner_btn">ГОТОВ</button>
+                                                            </div>
+                                                      
+                                                    <?php endif; ?>
+                                        
+
+                                        <?php endif; ?>
+
+                                        <div class="all_bets_user_img_name_star_num_wrapper">
+                                           
+                                                  <div class="all_bets_user_img_name_wrapper first_user_img_name_wrapper" >
+                                                       
+                                                     <div class="complain_blacklist_view_statistics_view_profile_links_buttons_wrapper">
+                                                        <div class="to_praise_icon_title_wrapper">
+                                                           <div class="to_praise_icon_notification_wrapper">
+                                                                <div class="to_praise_icon"><svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="#3EFF74"/></svg></div>
+                                                                <span class="to_praise_notification">+1</span>    
+                                                            </div>                  
+                                                           <p class="to_praise_title">Похвалить</p>
+                                                        </div>
+                                                        <div class="to_complain_icon_title_wrapper">
+                                                           <div class="to_complain_icon_notification_wrapper">
+                                                               <div class="to_complain_icon"><svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="#FF367E"/></svg></div>
+                                                               <span  class="to_complain_notification">-1</span>
+                                                           </div>
+                                                           <p class="to_complain_title">Пожаловаться</p>
+                                                        </div>
+                                                        <div class="add_to_blacklist_icon_title_wrapper">
+                                                               <div class="add_to_blacklist_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM4 12C4 7.6 7.6 4 12 4C13.8 4 15.5 4.6 16.9 5.7L5.7 16.9C4.6 15.5 4 13.8 4 12ZM12 20C10.2 20 8.5 19.4 7.1 18.3L18.3 7.1C19.4 8.5 20 10.2 20 12C20 16.4 16.4 20 12 20Z" fill="#3EFF74"/></svg></div>
+                                                            <p class="add_to_blacklist_title">Добавить в чёрный список</p>
+                                                        </div>
+                                                        <div class="view_statistics_icon_title_wrapper">
+                                                            <div class="view_statistics_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 17H15V13H17V17ZM13 17H11V7H13V17ZM9 17H7V10H9V17ZM19 3H5C3.89 3 3 3.89 3 5V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V5C21 3.89 20.1 3 19 3Z" fill="#3EFF74"/></svg></div>
+                                                            <p class="view_statistics_title">Посмотреть статистику</p>
+                                                        </div>
+                                                        <div class="view_profile_icon_title_wrapper">
+                                                             <div class="view_profile_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C13.0609 4 14.0783 4.42143 14.8284 5.17157C15.5786 5.92172 16 6.93913 16 8C16 9.06087 15.5786 10.0783 14.8284 10.8284C14.0783 11.5786 13.0609 12 12 12C10.9391 12 9.92172 11.5786 9.17157 10.8284C8.42143 10.0783 8 9.06087 8 8C8 6.93913 8.42143 5.92172 9.17157 5.17157C9.92172 4.42143 10.9391 4 12 4ZM12 14C16.42 14 20 15.79 20 18V20H4V18C4 15.79 7.58 14 12 14Z" fill="#3EFF74"/></svg></div>
+                                                             <p class="view_profile_title">Посмотреть профиль</p>
+                                                        </div>
+                                                     </div>
+
+                                                        <?php if (isset($owner_user_data['image'][0]) && !empty($owner_user_data['image'][0])): ?>
+
+                                                                    <div  class="all_bets_user_img">
+
+                                                                         <img src="<?php echo content_url(). '/uploads/images/' .$owner_user_data['image'][0]; ?>" alt="">
+
+                                                                    </div>
+
+                                                        <?php else: ?>
+                                                                    
+                                                                    <div  class="all_bets_user_img">
+
+                                                                         <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                                    </div>     
+                                                                                              
+                                                        <?php endif; ?>
+                                                 <div class="all_bets_user_name">
+                                                          <p class="all_bets_user_name_text"></p>
+                                                 </div>
+                                                  </div>
+                                                  <p class="all_bets_user_main_name"><?php echo $owner_user_data['first_name'][0]; ?></p>
+                                                  <div class="stars_num_wrapper">
+                                                      <div class="star">
+                                                         <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                         <path d="M7.5 0L9.18386 5.18237H14.6329L10.2245 8.38525L11.9084 13.5676L7.5 10.3647L3.09161 13.5676L4.77547 8.38525L0.367076 5.18237H5.81614L7.5 0Z" fill="#888888"/>
+                                                         </svg> 
+                                                      </div>
+                                                      <p class="star_num">1 328</p>
+                                                  </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="all_bets_timer_wrapper">
+                                           <p class="all_bets_timer_money">&#8381 <?php echo $players_game_info[0]->user_bet; ?></p>
+                                           <div class="all_bets_timer">
+                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="bet_timmer_svg" version="1.1" viewBox="0 0 300 300" preserveAspectRatio="none">
+                                                <circle cx="100" cy="100" r="57" id="pink-halo2" fill="none" stroke="#000000" stroke-width="10" stroke-dasharray="0, 361" transform="rotate(-90,100,100)" />
+                                                <text id="myTimer2" text-anchor="middle" x="100" y="110" style="font-size: 40px; fill:#888888;"></text>
+                                                </svg>
+
+
+
+                                              </div>
+                                           <!-- <button class="all_bets_timer_add_evidence_btn">ДОБАВИТЬ ДОКАЗАТЕЛЬСТВА</button> -->
+                                    </div>
+                                    <div class="all_bets_user2 user2">
+                                            <?php if ($players_game_info[0]->accept_user_id == $login_user_id): ?>
+                                                    
+                                                    <?php if ($players_game_info[0]->accepter_user_accepted != '1' &&  $players_game_info[0]->accepter_user_accepted != '2' && $players_game_info[0]->accepter_user_accepted != '3'): ?>
+
+                                                       <div class="expression_modаl">
+
+                                                        <button type="button" data-bet_id="<?php echo $play_game_id ?>" id="accepter_agree" data-user_id="<?php echo $players_game_info[0]->accept_user_id; ?>" class="expression_modаl_accept_btn">ГОТОВ</button>
+
+                                                       </div>
+
+                                                    <?php endif; ?> 
+
+                                            <?php endif; ?>
+                                        <div class="all_bets_user_img_name_star_num_wrapper">                           
+                                               <div class="all_bets_user_img_name_wrapper second_user_img_name_wrapper">
+
+
+                                               <div class="complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2">
+                                                        <div class="to_praise_icon_title_wrapper">
+                                                           <div class="to_praise_icon_notification_wrapper">
+                                                                <div class="to_praise_icon"><svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="#3EFF74"/></svg></div>
+                                                                <span class="to_praise_notification">+1</span>    
+                                                            </div>                  
+                                                           <p class="to_praise_title">Похвалить</p>
+                                                        </div>
+                                                        <div class="to_complain_icon_title_wrapper">
+                                                           <div class="to_complain_icon_notification_wrapper">
+                                                               <div class="to_complain_icon"><svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" fill="#FF367E"/></svg></div>
+                                                               <span  class="to_complain_notification">-1</span>
+                                                           </div>
+                                                           <p class="to_complain_title">Пожаловаться</p>
+                                                        </div>
+                                                        <div class="add_to_blacklist_icon_title_wrapper">
+                                                               <div class="add_to_blacklist_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM4 12C4 7.6 7.6 4 12 4C13.8 4 15.5 4.6 16.9 5.7L5.7 16.9C4.6 15.5 4 13.8 4 12ZM12 20C10.2 20 8.5 19.4 7.1 18.3L18.3 7.1C19.4 8.5 20 10.2 20 12C20 16.4 16.4 20 12 20Z" fill="#3EFF74"/></svg></div>
+                                                            <p class="add_to_blacklist_title">Добавить в чёрный список</p>
+                                                        </div>
+                                                        <div class="view_statistics_icon_title_wrapper">
+                                                            <div class="view_statistics_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 17H15V13H17V17ZM13 17H11V7H13V17ZM9 17H7V10H9V17ZM19 3H5C3.89 3 3 3.89 3 5V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V5C21 3.89 20.1 3 19 3Z" fill="#3EFF74"/></svg></div>
+                                                            <p class="view_statistics_title">Посмотреть статистику</p>
+                                                        </div>
+                                                        <div class="view_profile_icon_title_wrapper">
+                                                             <div class="view_profile_icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C13.0609 4 14.0783 4.42143 14.8284 5.17157C15.5786 5.92172 16 6.93913 16 8C16 9.06087 15.5786 10.0783 14.8284 10.8284C14.0783 11.5786 13.0609 12 12 12C10.9391 12 9.92172 11.5786 9.17157 10.8284C8.42143 10.0783 8 9.06087 8 8C8 6.93913 8.42143 5.92172 9.17157 5.17157C9.92172 4.42143 10.9391 4 12 4ZM12 14C16.42 14 20 15.79 20 18V20H4V18C4 15.79 7.58 14 12 14Z" fill="#3EFF74"/></svg></div>
+                                                             <p class="view_profile_title">Посмотреть профиль</p>
+                                                        </div>
+                                                     </div>
+
+
+                                                     
+                                                     <?php if (isset($accept_user_data['image'][0]) && !empty($accept_user_data['image'][0])): ?>
+
+                                                            <div  class="all_bets_user_img">
+
+                                                                 <img src="<?php echo content_url(). '/uploads/images/' .$accept_user_data['image'][0]; ?>" alt="">
+
+                                                            </div>
+
+                                                    <?php else: ?>
+                                                        
+                                                            <div  class="all_bets_user_img">
+
+                                                                 <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                            </div>     
+                                                                                  
+                                            <?php endif; ?>
+                                             <!--  <div class="all_bets_user_name">
+                                                       <p class="all_bets_user_name_text">VP</p>
+                                              </div> -->
+                                               </div>
+                                                <p class="all_bets_user_main_name"><?php echo $accept_user_data['first_name'][0]; ?></p>
+                                               <div class="stars_num_wrapper">
+                                                 <div class="star">
+                                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M7.5 0L9.18386 5.18237H14.6329L10.2245 8.38525L11.9084 13.5676L7.5 10.3647L3.09161 13.5676L4.77547 8.38525L0.367076 5.18237H5.81614L7.5 0Z" fill="#888888"/>
+                                                    </svg> 
+                                                 </div>
+                                                 <p class="star_num">1 328</p>
+                                               </div>
+                                         
+                                         
+                                     </div>
+                                    </div>
+                                   </div>
+                                   <div class="all_bets_users_chat_wrapper">
+                                    <div class="all_bets_user_img_name_wrapper chat_user">
+                                            <?php if (isset($owner_user_data['image'][0]) && !empty($owner_user_data['image'][0])): ?>
+
+                                                        <div  class="all_bets_user_img">
+
+                                                             <img src="<?php echo content_url(). '/uploads/images/' .$owner_user_data['image'][0]; ?>" alt="">
+
+                                                        </div>
+
+                                            <?php else: ?>
+                                                        
+                                                        <div  class="all_bets_user_img">
+
+                                                             <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                        </div>     
+                                                                                  
+                                            <?php endif; ?>
+                                   <div class="all_bets_user_name">
+                                            <p class="all_bets_user_name_text"></p>
+                                   </div>
+                                   </div>
+                                   <div class="all_bets_user_img_name_wrapper chat_user">
+                                            <?php if (isset($accept_user_data['image'][0]) && !empty($accept_user_data['image'][0])): ?>
+
+                                                        <div  class="all_bets_user_img">
+
+                                                             <img src="<?php echo content_url(). '/uploads/images/' .$accept_user_data['image'][0]; ?>" alt="">
+
+                                                        </div>
+
+                                            <?php else: ?>
+                                                        
+                                                        <div  class="all_bets_user_img">
+
+                                                             <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                        </div>     
+                                                                                  
+                                            <?php endif; ?>
+                                       <div class="all_bets_user_name">
+                                                <p class="all_bets_user_name_text"></p>
+                                       </div>
+                                   </div>
+                                  </div>
+                                </div>
+                                <?php if ($players_game_info[0]->accepter_user_accepted != '0' && $players_game_info[0]->accepter_user_accepted != '3'): ?>
+                                             
+                                             <p class="all_bets_user_expression expression_mobile2">Я ГОТОВ!</p>
+                                            
+                                <?php endif; ?>
+                                <p class="all_bets_user_expression  accepter_agree_show">Я ГОТОВ!</p>
+
+
+                                <?php if ($players_game_info[0]->owner_user_accepted == '3' && $players_game_info[0]->accepter_user_accepted == '3'): ?>
+
+                                            <?php if ($players_game_info[0]->accept_user_id == $login_user_id): ?>
+                                                        
+                                                        <?php if (empty($players_game_info[0]->winner_user)): ?>
+
+                                                           <button class="all_bets_user_expression accepter_opponent_win_btn" id="accepter_won_btn" data-bet_id="<?php echo $play_game_id ?>" data-won_user_id="<?php echo $players_game_info[0]->accept_user_id; ?> " >Я ПОБЕДИЛ!</button>
+
+                                                        <?php elseif (!empty($players_game_info[0]->disagree_win) && $players_game_info[0]->disagree_win == $login_user_id ): ?>
+                                                                     
+                                                                    
+                                                                    <button class="all_bets_user_expression disagree_opponent_win_btn" id="disagree_won_btn" data-bet_id="<?php echo $play_game_id; ?>" >Я ПОБЕДИЛ!</button>
+
+                                                        <?php endif; ?>
+
+                                            <?php else: ?>
+
+                                                <?php if (empty($players_game_info[0]->winner_user)): ?>
+                                        
+                                                          <button class="all_bets_user_expression accepter_mine_win_btn opponent_won_btn" data-bet_id="<?php echo $play_game_id ?>" data-user_id="<?php echo $players_game_info[0]->accept_user_id; ?>">ОН ПОБЕДИЛ!</button>
+                                                
+                                                <?php endif; ?>
+
+                                            <?php endif; ?>
+
+                                <?php endif; ?>
+
+                              </div>
+                              <div class="all_bets_chat_user_wrapper all_bets_user_item" id="all_bet_open2">
+                            <div class="all_bets_chat_wrapper">
+                           
+                                          
+                              <div class="all_bets_chat_items_wrapper">
+                                   
+                                    <?php if(isset($all_messages) && !empty($all_messages)): ?>
+
+                                                    <?php foreach($all_messages as $key): ?>
+                                                                  
+                                                                <?php $owner_user_data_message = user_new_bets($key->sender_id);?>
+                                                                <?php $message_create_time = strtotime($key->created_at); ?>
+
+
+                                                                <?php if($key->sender_id == $user_data[0]->ID): ?>
+                                                          
+                                                                 <div class="players_chat_send_messages_wrapper">
+                                                                    <div class="players_chat_receive_messages_img_text_wrapper" >
+                                                                        <div  class="players_chat_receive_messages_user_img_name_wrapper">
+                                                                            <p class="players_chat_receive_messages_user_name"><?php echo $owner_user_data_message['first_name'][0]; ?></p>
+                                                                            <div  class="players_chat_receive_messages_img_wrapper">
+                                                                                  
+                                                                                  <?php if (isset($owner_user_data_message['image'][0]) && !empty($owner_user_data_message['image'][0])): ?>
+
+                                                                                                                    <div  class="players_chat_receive_messages_img">
+
+                                                                                                                         <img src="<?php echo content_url(). '/uploads/images/' .$owner_user_data_message['image'][0]; ?>" alt="">
+
+                                                                                                                    </div>
+
+                                                                                    <?php else: ?>
+                                                                                                                    
+                                                                                                                    <div  class="players_chat_receive_messages_img">
+
+                                                                                                                         <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                                                                                    </div>     
+                                                                                          
+                                                                                    <?php endif; ?>
+                                                                              
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                       <p class="players_chat_receive_messages_text"><?php echo $key->messages; ?></p>
+                                                                        <div  class="players_chat_receive_messages_hour_wrapper">
+                                                                            <p class="players_chat_receive_messages_hour"><?php echo human_time_diff($message_create_time);  ?> назад</p>
+                                                                        </div>
+                                                                    </div>
+                                                                 </div>
+
+
+                                                            <?php else: ?>
+
+                                                                     <div class="players_chat_receive_messages_wrapper">
+                                                                        <div class="players_chat_receive_messages_img_text_wrapper"  >
+                                                                            <div  class="players_chat_receive_messages_user_img_name_wrapper">
+                                                                               <div  class="players_chat_receive_messages_img_wrapper">
+                                                                                   <?php if (isset($owner_user_data_message['image'][0]) && !empty($owner_user_data_message['image'][0])): ?>
+
+                                                                                                                    <div  class="players_chat_receive_messages_img">
+
+                                                                                                                         <img src="<?php echo content_url(). '/uploads/images/' .$owner_user_data_message['image'][0]; ?>" alt="">
+
+                                                                                                                    </div>
+
+                                                                                    <?php else: ?>
+                                                                                                                    
+                                                                                                                    <div  class="players_chat_receive_messages_img">
+
+                                                                                                                         <img src="<?php echo bloginfo('template_url'); ?>/images/bet_img1.png" alt="">
+
+                                                                                                                    </div>     
+                                                                                          
+                                                                                    <?php endif; ?>
+                                                                                
+                                                                                <!--  <div class="players_chat_receive_messages_img_name">
+                                                                                       <p class="players_chat_receive_messages_user_name_second"></p>         
+                                                                                 </div> -->
+                                                                               </div>
+                                                                               <p class="players_chat_receive_messages_user_name"><?php echo $owner_user_data_message['first_name'][0]; ?></p>
+                                                                           </div>
+                                                                           <p class="players_chat_receive_messages_text"><?php echo $key->messages; ?></p>
+                                                                            <div  class="players_chat_receive_messages_hour_wrapper">
+                                                                                <p class="players_chat_receive_messages_hour"><?php echo human_time_diff($message_create_time);  ?> назад</p>
+                                                                            </div>
+                                                                        </div>
+                                                                     </div>
+                                                            
+                                                            <?php endif; ?>
+
+                                                    <?php endforeach; ?>
+                                
+
+                                            <?php endif; ?>        
+                                            <input type="hidden"  value="<?php if(isset($key->id) && !empty($key->id)): echo $key->id; endif; ?>" class="live_chat_hidden_data">
+                               
+                               </div>
+                          
+                             </div>
+                             <form  action="" class="all_bets_chat_form">
+                                 
+                                            <input type="text" name="message" class="all_bets_chat" placeholder="Написать сообщение">
+
+                                            <button type="submit" data-bet_id="<?php echo $play_game_id; ?>" class="all_bets_form_btn">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0)">
+                                                    <path d="M22.5707 9.85945L3.20688 1.8246C2.39111 1.48607 1.4695 1.63499 0.80177 2.21306C0.134035 2.79121 -0.145246 3.68202 0.0730042 4.53782L1.79655 11.2968H10.2353C10.6236 11.2968 10.9384 11.6116 10.9384 12C10.9384 12.3883 10.6236 12.7032 10.2353 12.7032H1.79655L0.0730042 19.4621C-0.145246 20.318 0.133988 21.2088 0.80177 21.7869C1.47086 22.3661 2.39257 22.5132 3.20693 22.1753L22.5707 14.1405C23.4523 13.7747 24 12.9545 24 12C24 11.0455 23.4523 10.2252 22.5707 9.85945Z" fill="black"/>
+                                                    </g>
+                                                    <defs>
+                                                    <clipPath id="clip0">
+                                                    <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                    </defs>
+                                                </svg>
+                                               
+                                            </button>
+                                     
+                                 </form> 
+                       </div>
+                       </div>
+                 </section>
+                 <div class="add_evidence_modal">
+                      
+                        <form action="" class="add_evidence_modal_wrapper" method="post" enctype="multipart/form-data" >
+                            
+                            <input type="hidden" id="game_id" name="bet_id" value="<?php echo $play_game_id; ?>">
+                            <h1  class="add_evidence_modal_title">
+                                ДОБАВИТЬ ДОКАЗАТЕЛЬСТВА
+                            </h1>
+                            <div class="add_evidence_modal_close">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="#969696"/>
+                                </svg>
+                            </div>
+                              <div class="add_evidence_modal_inputs_fields_wrapper">
+                                  <div class="add_evidence_modal_inputs_field"> 
+                                           <p class="evidence_inputs_field_title">Ссылка на видео</p>
+                                           <input type="text" name="evidence_video" class="evidence_input_field" placeholder="http://youtube.com?v=3434t454t54">
+                                           <span class="error_text error_evidence_link"> Сообщение об ошибке валидации </span>
+                                           <input type="text" name="evidence_video_second" class="evidence_input_field" placeholder="http://youtube.com?v=3434t454t54">
+                                           <span class="error_text error_evidence_link_second"> Сообщение об ошибке валидации </span>
+                                  </div>
+                                 
+                                  <div class="add_evidence_modal_inputs_field"> 
+                                    <p class="evidence_inputs_field_title">Документ</p>
+                                    <label for="add_evidence_image">
+                                    <div class="evidence_uploade_document">
+                                           
+                                           <p>Перетащите файл сюда</p> 
+                                           <div class="evidence_image_wrapper">
+                                        
+                                            <img src="" alt="">
+
+                                           </div>
+
+                                    </div>
+                                    </label>
+                                    <input type="file" name="image" id="add_evidence_image" class="" hidden>
+                                    <span class="error_text error_evidence_image"> Сообщение об ошибке валидации </span>
+                                  </div>
+
+                                  
+                              </div>
+                              
+                              <div class="add_evidence_modal_btns_wrapper">
+                                <button type="button" class="add_evidence_cancel_btn">ОТМЕНА</button>
+                                <button type="submit" id="send_evidence_btn"  class="add_evidence_ready_btn">ОТПРАВИТЬ</button>
+                            </div>
+
+                            
+                        </form>
+                 </div>
+                 </main>
+
+                 <?php get_footer(); ?>
+
+                <script type="text/javascript">
+                    var game_id = <?php echo $play_game_id; ?>;
+                    $( document ).ready(function() {
+                        $('.all_bets_chat_wrapper').scrollTop($('.all_bets_chat_wrapper')[0].scrollHeight);
+
+                    });
+
+                    setInterval(function(){
+                       update_chat_data();
+                    }, 3000);
+
+                  
+               </script>
+
+               <?php if ($players_game_info[0]->owner_user_accepted == '2' &&  $players_game_info[0]->accepter_user_accepted == '2'): ?>
+                         
+                         <script>
+                            $( document ).ready(function() {
+                                
+                                $(".all_bets_show_timer").css("display","none");
+                                $(".all_bets_timer").css("display","block");
+                                update_start_timer();
+                                
+
+                            });
+
+                         </script>
+
+                <?php endif; ?>         
+                <?php if ($players_game_info[0]->owner_user_accepted != '3' &&  $players_game_info[0]->accepter_user_accepted != '3'): ?>
+                             
+                              <script>
+                                 
+                                setInterval(function(){
+                                   update_users_agree(game_id);
+                                }, 2000); 
+
+                              </script>
+
+               <?php endif; ?>
+
+            <?php }else{ ?>
+
+                 <h1 class="users_bet_page_error">Страница не найдена</h1>
+
+
+            <?php } ?>
+           
+        <?php }else{ ?>
+
+            <h1 class="users_bet_page_error">Страница не найдена</h1>
+
+
+        <?php } ?>  
+
+
+   <?php }else{ ?>
+
+            <h1 class="users_bet_page_error">Страница не найдена</h1>
+
+
+    <?php } ?>
+  
+
+    <script>
+        $(document).on("click", ".first_user_img_name_wrapper", function () {
+            $(".complain_blacklist_view_statistics_view_profile_links_buttons_wrapper").toggleClass("open");
+        })
+
+
+        $(document).on("click", ".second_user_img_name_wrapper", function () {
+            $(".complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2").toggleClass("open");
+        })
+
+  
+    </script>
+
+
+
+
+
+
+
+
+
+
+    
+/*complain_blacklist_view_statistics_view_profile_links_buttons_wrapper_box*/
+
+.complain_blacklist_view_statistics_view_profile_links_buttons_wrapper {
+    background: #5C0297;
+    box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 26px 0;
+    position: absolute;
+    width: 395px;
+     /* height: 342px; */
+    left: -340px;
+    top: 99px;
+    display: none;
+}
+
+.complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2 {
+    background: #5C0297;
+    box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 26px 0;
+    position: absolute;
+    width: 395px;
+     /* height: 342px; */
+     right: -252px;
+     z-index: 9;
+    top: 99px;
+    display: none;
+
+}
+
+ .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper.open{
+     display: block!important;
+ }
+
+ .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2.open{
+    display: block!important;
+}
+.to_praise_icon_title_wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    padding-bottom: 22px;
+    padding-left: 20px;
+    border-bottom: 1px solid #262733;
+}
+.to_complain_icon_title_wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    padding-bottom: 22px;
+    padding-left: 20px;
+    padding-top: 27px;
+    border-bottom: 1px solid #262733;
+}
+.add_to_blacklist_icon_title_wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    padding-bottom: 22px;
+    padding-left: 20px;
+    padding-top: 27px;
+    border-bottom: 1px solid #262733;
+}
+.view_statistics_icon_title_wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    padding-bottom: 22px;
+    padding-left: 20px;
+    padding-top: 27px;
+    border-bottom: 1px solid #262733;
+}
+.view_profile_icon_title_wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 27px;
+}
+.to_praise_icon_notification_wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 22px;
+}
+
+.to_complain_icon_notification_wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 22px;
+}
+.to_praise_notification {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #3EFF74;
+}
+.to_praise_icon{
+    margin-right: 4px;
+}
+.add_to_blacklist_icon{
+    margin-right: 39px;
+}
+.view_statistics_icon{
+    margin-right: 39px;
+}
+.view_profile_icon{
+    margin-right: 39px;
+}
+.to_complain_notification {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color:  #FF367E;
+}
+.to_complain_icon{
+    margin-right: 4px;
+}
+
+.to_praise_title {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #3EFF74;
+}
+
+.to_complain_title {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #3EFF74;
+}
+
+.add_to_blacklist_title{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #3EFF74;
+}
+.view_statistics_title{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #3EFF74;
+}
+.view_profile_title{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #3EFF74;
+}
+
+.first_user_img_name_wrapper{
+    cursor: pointer;
+}
+
+.second_user_img_name_wrapper{
+    cursor: pointer;
+}
+
+/*media*/
+
+@media (min-width: 1161px) and (max-width: 1340px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: -252px!important;
+    }
+}
+
+@media (min-width: 1071px) and  (max-width: 1160px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: -210px!important;
+    }
+}
+
+
+
+@media  (min-width: 1021px) and (max-width: 1070px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: -180px!important;
+    }
+}
+
+
+@media  (min-width: 951px) and  (max-width: 1020px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: -150px!important;
+    }
+}
+
+
+
+@media  (min-width: 875px) and  (max-width: 950px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: -110px!important;
+    }
+}
+
+
+@media  (min-width: 794px) and    (max-width: 874px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: -70px!important;
+    }
+}
+
+
+@media  (min-width: 731px) and (max-width: 793px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: -40px!important;
+    }
+}
+
+
+
+@media (min-width: 624px) and  (max-width: 730px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: -10px!important;
+    }
+}
+
+
+
+@media  (min-width: 426px) and   (max-width: 623px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: 50%!important;
+         top: 50%!important;
+         transform: translate(-48%, 26%);
+         z-index: 9;
+    }
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2{
+        left: 50%!important;
+         top: 50%!important;
+         transform: translate(-50%, -109%);
+         z-index: 9;
+    }
+}
+
+
+
+@media (min-width: 355px) and (max-width: 425px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: 50%!important;
+         top: 50%!important;
+         transform: translate(-48%, 26%);
+         z-index: 9;
+         width: 340px!important;
+    }
+
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2{
+        left: 50%!important;
+         top: 50%!important;
+         transform: translate(-50%, -109%);
+         z-index: 9;
+         width: 340px!important;
+    }
+    .add_to_blacklist_title{
+        font-size: 18px!important;
+    }
+    .to_praise_title{
+        font-size: 18px!important;
+    }
+    .to_complain_title{
+        font-size: 18px!important;
+    }
+    .view_statistics_title{
+        font-size: 18px!important;
+    }
+    .view_profile_title{
+        font-size: 18px!important;
+    }
+    .add_to_blacklist_icon_title_wrapper{
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+    .to_praise_icon_title_wrapper{
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+    .to_complain_icon_title_wrapper{
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+    .view_statistics_icon_title_wrapper{
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+    .view_profile_icon_title_wrapper{
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+}
+
+
+
+
+@media  (max-width: 354px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper{
+        left: 50%!important;
+         top: 50%!important;
+         transform: translate(-48%, 26%);
+         z-index: 9;
+         width: 300px!important;
+    }
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2{
+        left: 50%!important;
+         top: 50%!important;
+         transform: translate(-50%, -109%);
+         z-index: 9;
+         width: 300px!important;
+    }
+    .add_to_blacklist_title{
+        font-size: 16px!important;
+    }
+    .to_praise_title{
+        font-size: 16px!important;
+    }
+    .to_complain_title{
+        font-size: 16px!important;
+    }
+    .view_statistics_title{
+        font-size: 16px!important;
+    }
+    .view_profile_title{
+        font-size: 16px!important;
+    }
+    .add_to_blacklist_icon_title_wrapper{
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+    .to_praise_icon_title_wrapper{
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+    .to_complain_icon_title_wrapper{
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+    .view_statistics_icon_title_wrapper{
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+    .view_profile_icon_title_wrapper{
+        padding-left: 15px!important;
+        padding-right: 15px!important;
+    }
+}
+
+@media (min-width: 932px) and (max-width: 1170px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2{
+        right: -135px!important;
+    }
+}
+
+
+@media (min-width: 714px) and (max-width: 931px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2{
+        right: -30px!important;
+    }
+}
+
+@media (min-width: 624px) and (max-width: 713px){
+    .complain_blacklist_view_statistics_view_profile_links_buttons_wrapper2{
+        right: -27px!important;
+    }
+}
+
+
